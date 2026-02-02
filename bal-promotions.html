@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bal de Promotions 2025 | Collège des Trois-Sapins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --gold: #f4c542;
+            --gold-light: #ffd700;
+            --text: #ffffff;
+            --text-muted: #a0a0b0;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #0f0f23 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: sparkle 3s infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .floating-shape {
+            position: absolute;
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background: var(--glass);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .logo-text span {
+            color: var(--gold);
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        nav button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: var(--glass);
+            color: var(--text);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        nav button:hover, nav button.active {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+
+        /* Main content */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(233, 69, 96, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--gold) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .school-name {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+
+        .detail-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            min-width: 200px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(244, 197, 66, 0.1);
+        }
+
+        .detail-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .detail-card p {
+            color: var(--text-muted);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--text);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Info section */
+        .info-section {
+            margin-top: 4rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            color: var(--text-muted);
+        }
+
+        .info-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Form styles */
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-container .form-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        label .required {
+            color: var(--accent);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(244, 197, 66, 0.1);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f4c542' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2rem;
+        }
+
+        select option {
+            background: var(--secondary);
+            color: var(--text);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--gold);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            accent-color: var(--gold);
+        }
+
+        .checkbox-item.checked {
+            border-color: var(--gold);
+            background: rgba(244, 197, 66, 0.1);
+        }
+
+        .form-note {
+            background: rgba(244, 197, 66, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            padding: 1.25rem;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .form-note strong {
+            color: var(--gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .success-message h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .success-message p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Print sheet */
+        .print-sheet {
+            display: none;
+            background: white;
+            color: #333;
+            padding: 40px;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .print-sheet.show {
+            display: block;
+        }
+
+        .print-header {
+            text-align: center;
+            border-bottom: 3px solid #1a1a2e;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .print-header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #1a1a2e;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .print-header p {
+            color: #666;
+        }
+
+        .print-section {
+            margin-bottom: 25px;
+        }
+
+        .print-section h3 {
+            background: #1a1a2e;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .print-row {
+            display: flex;
+            border-bottom: 1px dotted #ccc;
+            padding: 8px 0;
+        }
+
+        .print-label {
+            font-weight: 600;
+            width: 200px;
+            color: #555;
+        }
+
+        .print-value {
+            flex: 1;
+            color: #333;
+        }
+
+        .signature-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #1a1a2e;
+        }
+
+        .signature-section h3 {
+            color: #e94560;
+            background: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .signature-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .signature-field {
+            text-align: center;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #333;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .signature-field label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .print-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .print-btn {
+            display: block;
+            width: fit-content;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        /* Volunteer specific styles */
+        .volunteer-roles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-card {
+            background: var(--glass);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .role-card:hover {
+            border-color: var(--gold);
+        }
+
+        .role-card.selected {
+            border-color: var(--gold);
+            background: rgba(244, 197, 66, 0.15);
+        }
+
+        .role-card input {
+            display: none;
+        }
+
+        .role-card .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .role-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .role-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Admin section (hidden by default) */
+        .admin-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .admin-table th {
+            background: var(--glass);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .admin-table tr:hover td {
+            background: var(--glass);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-pending {
+            background: rgba(244, 197, 66, 0.2);
+            color: var(--gold);
+        }
+
+        .badge-confirmed {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        .admin-tab-content {
+            animation: fadeIn 0.3s ease;
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .action-btn.confirm {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        .action-btn.delete {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent);
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .event-details {
+                gap: 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .countdown-value {
+                font-size: 2rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            /* Reset tout pour l'impression */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-family: 'Outfit', Arial, sans-serif !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Cacher tout sauf la fiche */
+            header, 
+            nav, 
+            .bg-animation, 
+            .hero, 
+            .cta-buttons, 
+            .print-btn, 
+            .form-container, 
+            .info-section,
+            .success-message,
+            .event-details,
+            .info-grid,
+            #home,
+            #benevole,
+            #admin,
+            #studentFormContainer,
+            #volunteerFormContainer,
+            #studentSuccess,
+            .sparkle,
+            .floating-shape {
+                display: none !important;
+                visibility: hidden !important;
+            }
+
+            /* Forcer l'affichage de la page inscription et de la fiche */
+            main {
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+
+            #inscription {
+                display: block !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .page {
+                display: none !important;
+            }
+
+            #inscription.active {
+                display: block !important;
+            }
+
+            /* La fiche d'impression elle-même */
+            .print-sheet {
+                display: block !important;
+                visibility: visible !important;
+                position: relative !important;
+                background: white !important;
+                color: #333 !important;
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 15px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+
+            .print-sheet.show {
+                display: block !important;
+                visibility: visible !important;
+            }
+
+            /* Styles de la fiche pour impression */
+            .print-header {
+                text-align: center;
+                border-bottom: 2px solid #1a1a2e !important;
+                padding-bottom: 15px !important;
+                margin-bottom: 20px !important;
+            }
+
+            .print-header h1 {
+                font-size: 1.5rem !important;
+                color: #1a1a2e !important;
+                margin-bottom: 5px !important;
+            }
+
+            .print-header p {
+                color: #333 !important;
+                margin: 3px 0 !important;
+                font-size: 0.9rem !important;
+            }
+
+            .print-section {
+                margin-bottom: 15px !important;
+                page-break-inside: avoid;
+            }
+
+            .print-section h3 {
+                background: #1a1a2e !important;
+                color: white !important;
+                padding: 8px 12px !important;
+                border-radius: 4px !important;
+                font-size: 0.9rem !important;
+                margin-bottom: 10px !important;
+            }
+
+            .print-row {
+                display: flex !important;
+                border-bottom: 1px dotted #999 !important;
+                padding: 6px 0 !important;
+                font-size: 0.85rem !important;
+            }
+
+            .print-label {
+                font-weight: 600 !important;
+                width: 180px !important;
+                min-width: 180px !important;
+                color: #333 !important;
+            }
+
+            .print-value {
+                flex: 1 !important;
+                color: #000 !important;
+            }
+
+            .signature-section {
+                margin-top: 25px !important;
+                padding-top: 15px !important;
+                border-top: 2px solid #1a1a2e !important;
+                page-break-inside: avoid;
+            }
+
+            .signature-section h3 {
+                color: #c0392b !important;
+                background: none !important;
+                padding: 0 !important;
+                margin-bottom: 10px !important;
+                font-size: 1rem !important;
+            }
+
+            .signature-section p {
+                font-size: 0.85rem !important;
+                color: #333 !important;
+                margin-bottom: 8px !important;
+            }
+
+            .signature-section ul {
+                margin-left: 20px !important;
+                color: #333 !important;
+                font-size: 0.8rem !important;
+            }
+
+            .signature-section li {
+                margin-bottom: 3px !important;
+            }
+
+            .signature-box {
+                display: flex !important;
+                gap: 30px !important;
+                margin-top: 25px !important;
+            }
+
+            .signature-field {
+                flex: 1 !important;
+                text-align: center !important;
+            }
+
+            .signature-line {
+                border-bottom: 1px solid #333 !important;
+                height: 50px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .signature-field label {
+                color: #666 !important;
+                font-size: 0.8rem !important;
+            }
+
+            .print-footer {
+                margin-top: 20px !important;
+                padding-top: 15px !important;
+                border-top: 1px solid #ccc !important;
+                text-align: center !important;
+                font-size: 0.75rem !important;
+                color: #666 !important;
+            }
+
+            .print-footer p {
+                margin: 3px 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background animation -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🎭</div>
+            <div class="logo-text">Bal de <span>Promotions</span> 2025</div>
+        </div>
+        <nav>
+            <button class="active" onclick="showPage('home')">Accueil</button>
+            <button onclick="showPage('inscription')">Inscription Élève</button>
+            <button onclick="showPage('benevole')">Devenir Bénévole</button>
+            <button onclick="showPage('admin')" style="border-color: var(--gold);">🔐 Admin</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <h1>Bal de Promotions 2025</h1>
+                <p class="subtitle">Une soirée inoubliable pour célébrer votre réussite</p>
+                <p class="school-name">Collège des Trois-Sapins | Échallens</p>
+
+                <!-- Countdown -->
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="days">--</div>
+                        <div class="countdown-label">Jours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="hours">--</div>
+                        <div class="countdown-label">Heures</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="minutes">--</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value" id="seconds">--</div>
+                        <div class="countdown-label">Secondes</div>
+                    </div>
+                </div>
+
+                <div class="event-details">
+                    <div class="detail-card">
+                        <div class="icon">📅</div>
+                        <h3>Date</h3>
+                        <p>Vendredi 27 juin 2025</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">🕖</div>
+                        <h3>Horaire</h3>
+                        <p>19h00 - 23h30</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">📍</div>
+                        <h3>Lieu</h3>
+                        <p>Salle polyvalente<br>Collège des Trois-Sapins</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">👗</div>
+                        <h3>Dress Code</h3>
+                        <p>Tenue de soirée élégante</p>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="showPage('inscription')">
+                        ✨ S'inscrire maintenant
+                    </button>
+                    <button class="btn btn-secondary" onclick="showPage('benevole')">
+                        🤝 Devenir bénévole
+                    </button>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎉 Programme de la soirée</h3>
+                        <ul>
+                            <li>19h00 : Accueil des élèves et apéritif</li>
+                            <li>19h30 : Discours de bienvenue</li>
+                            <li>20h00 : Remise des prix et distinctions</li>
+                            <li>20h30 : Ouverture du bal</li>
+                            <li>21h00 - 23h00 : Soirée dansante & animations</li>
+                            <li>23h30 : Fin de la soirée</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>📋 Informations pratiques</h3>
+                        <ul>
+                            <li>Ouvert aux élèves de 11e année et RAC</li>
+                            <li>Autorisation parentale obligatoire</li>
+                            <li>Bar avec boissons soft uniquement</li>
+                            <li>Photographe professionnel présent</li>
+                            <li>Vestiaire à disposition</li>
+                            <li>Encadrement par des bénévoles adultes</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>⚠️ À savoir</h3>
+                        <ul>
+                            <li>Inscription obligatoire avant le 13 juin</li>
+                            <li>Fiche d'autorisation à remettre au secrétariat</li>
+                            <li>Aucun alcool ni substance illicite</li>
+                            <li>Comportement respectueux exigé</li>
+                            <li>Sortie anticipée avec autorisation uniquement</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Inscription Élève -->
+        <div id="inscription" class="page">
+            <div class="form-container" id="studentFormContainer">
+                <h2>Inscription Élève</h2>
+                <p class="form-subtitle">Remplis ce formulaire pour t'inscrire au Bal de Promotions 2025</p>
+
+                <form id="studentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prénom <span class="required">*</span></label>
+                            <input type="text" name="prenom" required placeholder="Ton prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom <span class="required">*</span></label>
+                            <input type="text" name="nom" required placeholder="Ton nom">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date de naissance <span class="required">*</span></label>
+                            <input type="date" name="dateNaissance" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Classe <span class="required">*</span></label>
+                            <select name="classe" required>
+                                <option value="">Sélectionne ta classe</option>
+                                <option value="11VG1">11VG1</option>
+                                <option value="11VG2">11VG2</option>
+                                <option value="11VG3">11VG3</option>
+                                <option value="11VP1">11VP1</option>
+                                <option value="11VP2">11VP2</option>
+                                <option value="11VP3">11VP3</option>
+                                <option value="RAC1">RAC1</option>
+                                <option value="RAC2">RAC2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adresse complète <span class="required">*</span></label>
+                        <input type="text" name="adresse" required placeholder="Rue, numéro, NPA, localité">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email <span class="required">*</span></label>
+                            <input type="email" name="email" required placeholder="ton.email@exemple.ch">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone <span class="required">*</span></label>
+                            <input type="tel" name="telephone" required placeholder="079 123 45 67">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nom et prénom du représentant légal <span class="required">*</span></label>
+                        <input type="text" name="parentNom" required placeholder="Prénom et Nom du parent/tuteur">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Téléphone du représentant légal <span class="required">*</span></label>
+                            <input type="tel" name="parentTel" required placeholder="079 123 45 67">
+                        </div>
+                        <div class="form-group">
+                            <label>Email du représentant légal</label>
+                            <input type="email" name="parentEmail" placeholder="parent@exemple.ch">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Allergies ou informations médicales importantes</label>
+                        <textarea name="allergies" rows="2" placeholder="Indique ici toute allergie ou information médicale à connaître (facultatif)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Restrictions alimentaires</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="regime" value="vegetarien">
+                                Végétarien
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="regime" value="vegan">
+                                Végan
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="regime" value="halal">
+                                Halal
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="regime" value="sans-gluten">
+                                Sans gluten
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="regime" value="sans-lactose">
+                                Sans lactose
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-note">
+                        <strong>📋 Important :</strong> Après ton inscription, une fiche d'autorisation sera générée. Tu devras l'imprimer, la faire signer par ton représentant légal, puis la déposer au secrétariat <strong>avant le 13 juin 2025</strong>.
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        ✨ Valider mon inscription
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success message -->
+            <div class="success-message" id="studentSuccess">
+                <div class="success-icon">✓</div>
+                <h3>Inscription enregistrée !</h3>
+                <p>Ta fiche d'autorisation est prête à être imprimée.<br>N'oublie pas de la faire signer et de la remettre au secrétariat.</p>
+            </div>
+
+            <!-- Print sheet -->
+            <div class="print-sheet" id="printSheet">
+                <div class="print-header">
+                    <h1>🎭 Bal de Promotions 2025</h1>
+                    <p>Collège des Trois-Sapins | Échallens</p>
+                    <p><strong>Fiche d'inscription et autorisation parentale</strong></p>
+                </div>
+
+                <div class="print-section">
+                    <h3>📝 Informations de l'élève</h3>
+                    <div class="print-row">
+                        <span class="print-label">Nom complet :</span>
+                        <span class="print-value" id="print-nom"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Date de naissance :</span>
+                        <span class="print-value" id="print-naissance"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Classe :</span>
+                        <span class="print-value" id="print-classe"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Adresse :</span>
+                        <span class="print-value" id="print-adresse"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Email :</span>
+                        <span class="print-value" id="print-email"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Téléphone :</span>
+                        <span class="print-value" id="print-tel"></span>
+                    </div>
+                </div>
+
+                <div class="print-section">
+                    <h3>👨‍👩‍👧 Représentant légal</h3>
+                    <div class="print-row">
+                        <span class="print-label">Nom :</span>
+                        <span class="print-value" id="print-parent-nom"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Téléphone :</span>
+                        <span class="print-value" id="print-parent-tel"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Email :</span>
+                        <span class="print-value" id="print-parent-email"></span>
+                    </div>
+                </div>
+
+                <div class="print-section">
+                    <h3>ℹ️ Informations complémentaires</h3>
+                    <div class="print-row">
+                        <span class="print-label">Allergies / Médical :</span>
+                        <span class="print-value" id="print-allergies"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Régime alimentaire :</span>
+                        <span class="print-value" id="print-regime"></span>
+                    </div>
+                </div>
+
+                <div class="print-section">
+                    <h3>📅 Détails de l'événement</h3>
+                    <div class="print-row">
+                        <span class="print-label">Date :</span>
+                        <span class="print-value">Vendredi 27 juin 2025</span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Horaire :</span>
+                        <span class="print-value">19h00 - 23h30</span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Lieu :</span>
+                        <span class="print-value">Salle polyvalente, Collège des Trois-Sapins</span>
+                    </div>
+                </div>
+
+                <div class="signature-section">
+                    <h3>✍️ Autorisation parentale</h3>
+                    <p>Je soussigné(e), représentant(e) légal(e) de l'élève mentionné(e) ci-dessus, autorise sa participation au Bal de Promotions 2025 du Collège des Trois-Sapins.</p>
+                    <p style="margin-top: 10px;">Je déclare :</p>
+                    <ul style="margin-left: 20px; margin-top: 5px; color: #555;">
+                        <li>Avoir pris connaissance des horaires et du lieu de l'événement</li>
+                        <li>M'engager à venir chercher mon enfant à 23h30 ou autoriser son retour autonome</li>
+                        <li>Être joignable au numéro indiqué pendant toute la durée de la soirée</li>
+                        <li>Avoir informé les organisateurs de toute allergie ou condition médicale importante</li>
+                    </ul>
+
+                    <div class="signature-box">
+                        <div class="signature-field">
+                            <div class="signature-line"></div>
+                            <label>Lieu et date</label>
+                        </div>
+                        <div class="signature-field">
+                            <div class="signature-line"></div>
+                            <label>Signature du représentant légal</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="print-footer">
+                    <p>📌 <strong>Document à remettre au secrétariat avant le 13 juin 2025</strong></p>
+                    <p>Collège des Trois-Sapins | Échallens | www.trois-sapins.ch</p>
+                </div>
+            </div>
+
+            <button class="print-btn" id="printBtn" style="display: none;" onclick="window.print()">
+                🖨️ Imprimer la fiche d'autorisation
+            </button>
+        </div>
+
+        <!-- Inscription Bénévole -->
+        <div id="benevole" class="page">
+            <div class="form-container" id="volunteerFormContainer">
+                <h2>Devenir Bénévole</h2>
+                <p class="form-subtitle">Aidez-nous à faire de cette soirée un moment inoubliable !</p>
+
+                <form id="volunteerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prénom <span class="required">*</span></label>
+                            <input type="text" name="prenom" required placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom <span class="required">*</span></label>
+                            <input type="text" name="nom" required placeholder="Votre nom">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email <span class="required">*</span></label>
+                            <input type="email" name="email" required placeholder="votre.email@exemple.ch">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone <span class="required">*</span></label>
+                            <input type="tel" name="telephone" required placeholder="079 123 45 67">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lien avec l'établissement <span class="required">*</span></label>
+                        <select name="lien" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="parent-11">Parent d'élève de 11e année</option>
+                            <option value="parent-rac">Parent d'élève RAC</option>
+                            <option value="parent-autre">Parent d'élève (autre classe)</option>
+                            <option value="enseignant">Enseignant(e)</option>
+                            <option value="personnel">Personnel de l'école</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Si parent, nom et classe de votre enfant</label>
+                        <input type="text" name="enfant" placeholder="Ex: Marie Dupont - 11VP2">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rôle(s) souhaité(s) <span class="required">*</span></label>
+                        <div class="volunteer-roles">
+                            <label class="role-card">
+                                <input type="checkbox" name="role" value="accueil">
+                                <div class="role-icon">🚪</div>
+                                <h4>Accueil</h4>
+                                <p>Accueillir les élèves à l'entrée, vérifier les inscriptions</p>
+                            </label>
+                            <label class="role-card">
+                                <input type="checkbox" name="role" value="bar">
+                                <div class="role-icon">🥤</div>
+                                <h4>Bar</h4>
+                                <p>Service des boissons et snacks au bar</p>
+                            </label>
+                            <label class="role-card">
+                                <input type="checkbox" name="role" value="securite">
+                                <div class="role-icon">🛡️</div>
+                                <h4>Sécurité</h4>
+                                <p>Surveillance et maintien du bon déroulement</p>
+                            </label>
+                            <label class="role-card">
+                                <input type="checkbox" name="role" value="decoration">
+                                <div class="role-icon">🎨</div>
+                                <h4>Décoration</h4>
+                                <p>Aide à l'installation et décoration (avant la soirée)</p>
+                            </label>
+                            <label class="role-card">
+                                <input type="checkbox" name="role" value="rangement">
+                                <div class="role-icon">🧹</div>
+                                <h4>Rangement</h4>
+                                <p>Aide au rangement et nettoyage (après la soirée)</p>
+                            </label>
+                            <label class="role-card">
+                                <input type="checkbox" name="role" value="photos">
+                                <div class="role-icon">📸</div>
+                                <h4>Photos</h4>
+                                <p>Aide au photographe, gestion du photobooth</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Disponibilité <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dispo" value="avant">
+                                Avant (dès 17h)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dispo" value="debut">
+                                Début de soirée (19h-21h)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dispo" value="fin">
+                                Fin de soirée (21h-23h30)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dispo" value="apres">
+                                Après (rangement)
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="dispo" value="toute">
+                                Toute la soirée
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message ou remarques</label>
+                        <textarea name="message" rows="3" placeholder="Expérience particulière, questions, contraintes..."></textarea>
+                    </div>
+
+                    <div class="form-note">
+                        <strong>🙏 Merci pour votre engagement !</strong><br>
+                        Un responsable vous contactera pour confirmer votre participation et vous donner les détails pratiques.
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        🤝 M'inscrire comme bénévole
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success message -->
+            <div class="success-message" id="volunteerSuccess">
+                <div class="success-icon">🙏</div>
+                <h3>Merci pour votre engagement !</h3>
+                <p>Votre inscription comme bénévole a bien été enregistrée.<br>Nous vous contacterons prochainement pour confirmer votre participation.</p>
+                <button class="btn btn-secondary" onclick="showPage('home')" style="margin-top: 1rem;">
+                    ← Retour à l'accueil
+                </button>
+            </div>
+        </div>
+
+        <!-- Admin Page -->
+        <div id="admin" class="page">
+            <div class="form-container" id="adminLogin" style="max-width: 400px;">
+                <h2>🔐 Administration</h2>
+                <p class="form-subtitle">Accès réservé aux organisateurs</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" id="adminPassword" required placeholder="Entrez le mot de passe">
+                    </div>
+                    <button type="submit" class="submit-btn">Accéder</button>
+                </form>
+            </div>
+
+            <div id="adminPanel" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem;">
+                        📊 Tableau de bord
+                    </h2>
+                    <button class="btn btn-secondary" onclick="refreshData()">🔄 Actualiser</button>
+                </div>
+
+                <!-- Stats -->
+                <div class="event-details" style="margin-bottom: 3rem;">
+                    <div class="detail-card">
+                        <div class="icon">👨‍🎓</div>
+                        <h3 id="statEleves">0</h3>
+                        <p>Élèves inscrits</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">✅</div>
+                        <h3 id="statFiches">0</h3>
+                        <p>Fiches reçues</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">🤝</div>
+                        <h3 id="statBenevoles">0</h3>
+                        <p>Bénévoles</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">📋</div>
+                        <h3 id="statConfirmes">0</h3>
+                        <p>Bénévoles confirmés</p>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary admin-tab active" onclick="showAdminTab('eleves')">👨‍🎓 Élèves</button>
+                    <button class="btn btn-secondary admin-tab" onclick="showAdminTab('benevoles')">🤝 Bénévoles</button>
+                    <button class="btn btn-secondary admin-tab" onclick="exportData()">📥 Exporter CSV</button>
+                </div>
+
+                <!-- Students Table -->
+                <div id="elevesTab" class="admin-tab-content">
+                    <div class="info-card">
+                        <h3>Liste des élèves inscrits</h3>
+                        <div style="overflow-x: auto;">
+                            <table class="admin-table" id="studentsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Classe</th>
+                                        <th>Email</th>
+                                        <th>Parent</th>
+                                        <th>Tél. Parent</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsBody">
+                                    <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Chargement...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteers Table -->
+                <div id="benevolesTab" class="admin-tab-content" style="display: none;">
+                    <div class="info-card">
+                        <h3>Liste des bénévoles</h3>
+                        <div style="overflow-x: auto;">
+                            <table class="admin-table" id="volunteersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Email</th>
+                                        <th>Téléphone</th>
+                                        <th>Rôles</th>
+                                        <th>Disponibilités</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="volunteersBody">
+                                    <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Chargement...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <script>
+        // ============================================
+        // CONFIGURATION FIREBASE - À PERSONNALISER
+        // ============================================
+        // Remplace ces valeurs par celles de ton projet Firebase
+        // Tu les trouves dans : Console Firebase > Paramètres du projet > Vos applications > Config
+        
+        const firebaseConfig = {
+            apiKey: "VOTRE_API_KEY",
+            authDomain: "VOTRE_PROJET.firebaseapp.com",
+            projectId: "VOTRE_PROJECT_ID",
+            storageBucket: "VOTRE_PROJET.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "VOTRE_APP_ID"
+        };
+
+        // Initialiser Firebase
+        let db;
+        let firebaseInitialized = false;
+        
+        try {
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            firebaseInitialized = true;
+            console.log('✅ Firebase initialisé avec succès');
+        } catch (error) {
+            console.warn('⚠️ Firebase non configuré - Mode démonstration actif');
+            console.log('Pour activer Firebase, remplacez les valeurs dans firebaseConfig');
+        }
+
+        // Fonction pour sauvegarder une inscription élève
+        async function saveStudentRegistration(data) {
+            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+                console.log('📝 Mode démo - Inscription élève:', data);
+                return { success: true, id: 'demo-' + Date.now(), demo: true };
+            }
+            
+            try {
+                const docRef = await db.collection('inscriptions_eleves').add({
+                    ...data,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    status: 'en_attente', // en_attente, fiche_remise, confirmé
+                    ficheSignee: false
+                });
+                console.log('✅ Inscription élève enregistrée:', docRef.id);
+                return { success: true, id: docRef.id };
+            } catch (error) {
+                console.error('❌ Erreur sauvegarde:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Fonction pour sauvegarder une inscription bénévole
+        async function saveVolunteerRegistration(data) {
+            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+                console.log('📝 Mode démo - Inscription bénévole:', data);
+                return { success: true, id: 'demo-' + Date.now(), demo: true };
+            }
+            
+            try {
+                const docRef = await db.collection('inscriptions_benevoles').add({
+                    ...data,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    status: 'en_attente', // en_attente, contacté, confirmé
+                    contacte: false
+                });
+                console.log('✅ Inscription bénévole enregistrée:', docRef.id);
+                return { success: true, id: docRef.id };
+            } catch (error) {
+                console.error('❌ Erreur sauvegarde:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Create sparkles
+        function createSparkles() {
+            const bg = document.getElementById('bgAnimation');
+            for (let i = 0; i < 50; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
+                bg.appendChild(sparkle);
+            }
+
+            // Floating shapes
+            for (let i = 0; i < 5; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'floating-shape';
+                shape.style.left = Math.random() * 100 + '%';
+                shape.style.top = Math.random() * 100 + '%';
+                shape.style.width = (50 + Math.random() * 150) + 'px';
+                shape.style.height = shape.style.width;
+                shape.style.animationDelay = Math.random() * 10 + 's';
+                shape.style.animationDuration = (15 + Math.random() * 10) + 's';
+                bg.appendChild(shape);
+            }
+        }
+        createSparkles();
+
+        // Countdown
+        function updateCountdown() {
+            const eventDate = new Date('2025-06-27T19:00:00');
+            const now = new Date();
+            const diff = eventDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Page navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
+
+        // Role card selection
+        document.querySelectorAll('.role-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
+        });
+
+        // Checkbox styling
+        document.querySelectorAll('.checkbox-item input').forEach(input => {
+            input.addEventListener('change', function() {
+                this.parentElement.classList.toggle('checked', this.checked);
+            });
+        });
+
+        // Student form submission
+        document.getElementById('studentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Enregistrement en cours...';
+            
+            const formData = new FormData(this);
+            
+            // Préparer les données pour Firebase
+            const studentData = {
+                prenom: formData.get('prenom'),
+                nom: formData.get('nom'),
+                dateNaissance: formData.get('dateNaissance'),
+                classe: formData.get('classe'),
+                adresse: formData.get('adresse'),
+                email: formData.get('email'),
+                telephone: formData.get('telephone'),
+                parentNom: formData.get('parentNom'),
+                parentTel: formData.get('parentTel'),
+                parentEmail: formData.get('parentEmail') || '',
+                allergies: formData.get('allergies') || '',
+                regimeAlimentaire: formData.getAll('regime')
+            };
+            
+            // Sauvegarder dans Firebase
+            const result = await saveStudentRegistration(studentData);
+            
+            if (result.success) {
+                // Fill print sheet
+                document.getElementById('print-nom').textContent = studentData.prenom + ' ' + studentData.nom;
+                document.getElementById('print-naissance').textContent = formatDate(studentData.dateNaissance);
+                document.getElementById('print-classe').textContent = studentData.classe;
+                document.getElementById('print-adresse').textContent = studentData.adresse;
+                document.getElementById('print-email').textContent = studentData.email;
+                document.getElementById('print-tel').textContent = studentData.telephone;
+                document.getElementById('print-parent-nom').textContent = studentData.parentNom;
+                document.getElementById('print-parent-tel').textContent = studentData.parentTel;
+                document.getElementById('print-parent-email').textContent = studentData.parentEmail || 'Non renseigné';
+                document.getElementById('print-allergies').textContent = studentData.allergies || 'Aucune';
+                document.getElementById('print-regime').textContent = studentData.regimeAlimentaire.length > 0 ? studentData.regimeAlimentaire.join(', ') : 'Aucune restriction';
+
+                // Show success and print sheet
+                document.getElementById('studentFormContainer').style.display = 'none';
+                document.getElementById('studentSuccess').classList.add('show');
+                document.getElementById('printSheet').classList.add('show');
+                document.getElementById('printBtn').style.display = 'block';
+                
+                if (result.demo) {
+                    console.log('ℹ️ Mode démonstration - Configurez Firebase pour sauvegarder réellement les données');
+                }
+            } else {
+                alert('Erreur lors de l\'enregistrement. Veuillez réessayer.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // Volunteer form submission
+        document.getElementById('volunteerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            // Check if at least one role is selected
+            const roles = formData.getAll('role');
+            if (roles.length === 0) {
+                alert('Veuillez sélectionner au moins un rôle.');
+                return;
+            }
+
+            // Check if at least one availability is selected
+            const dispos = formData.getAll('dispo');
+            if (dispos.length === 0) {
+                alert('Veuillez indiquer vos disponibilités.');
+                return;
+            }
+
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Enregistrement en cours...';
+
+            // Préparer les données pour Firebase
+            const volunteerData = {
+                prenom: formData.get('prenom'),
+                nom: formData.get('nom'),
+                email: formData.get('email'),
+                telephone: formData.get('telephone'),
+                lien: formData.get('lien'),
+                enfant: formData.get('enfant') || '',
+                roles: roles,
+                disponibilites: dispos,
+                message: formData.get('message') || ''
+            };
+
+            // Sauvegarder dans Firebase
+            const result = await saveVolunteerRegistration(volunteerData);
+
+            if (result.success) {
+                // Show success
+                document.getElementById('volunteerFormContainer').style.display = 'none';
+                document.getElementById('volunteerSuccess').classList.add('show');
+                
+                if (result.demo) {
+                    console.log('ℹ️ Mode démonstration - Configurez Firebase pour sauvegarder réellement les données');
+                }
+            } else {
+                alert('Erreur lors de l\'enregistrement. Veuillez réessayer.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // Format date helper
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-CH', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        // ============================================
+        // ADMINISTRATION
+        // ============================================
+        
+        // Mot de passe admin (à changer!)
+        const ADMIN_PASSWORD = 'bal2025';
+        
+        let studentsData = [];
+        let volunteersData = [];
+
+        // Login admin
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadAdminData();
+            } else {
+                alert('Mot de passe incorrect');
+            }
+        });
+
+        // Charger les données admin
+        async function loadAdminData() {
+            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+                // Mode démo avec données fictives
+                studentsData = [
+                    { id: 'demo1', prenom: 'Marie', nom: 'Dupont', classe: '11VP1', email: 'marie@exemple.ch', parentNom: 'Jean Dupont', parentTel: '079 123 45 67', status: 'en_attente', ficheSignee: false },
+                    { id: 'demo2', prenom: 'Lucas', nom: 'Martin', classe: '11VG2', email: 'lucas@exemple.ch', parentNom: 'Sophie Martin', parentTel: '079 234 56 78', status: 'fiche_remise', ficheSignee: true }
+                ];
+                volunteersData = [
+                    { id: 'demo1', prenom: 'Pierre', nom: 'Durand', email: 'pierre@exemple.ch', telephone: '079 111 22 33', roles: ['bar', 'accueil'], disponibilites: ['debut', 'fin'], status: 'en_attente' },
+                    { id: 'demo2', prenom: 'Anne', nom: 'Bernard', email: 'anne@exemple.ch', telephone: '079 444 55 66', roles: ['securite'], disponibilites: ['toute'], status: 'confirmé' }
+                ];
+                updateAdminUI();
+                console.log('ℹ️ Mode démo - Données fictives affichées');
+                return;
+            }
+
+            try {
+                // Charger les élèves
+                const studentsSnapshot = await db.collection('inscriptions_eleves').orderBy('createdAt', 'desc').get();
+                studentsData = studentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+                // Charger les bénévoles
+                const volunteersSnapshot = await db.collection('inscriptions_benevoles').orderBy('createdAt', 'desc').get();
+                volunteersData = volunteersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+                updateAdminUI();
+            } catch (error) {
+                console.error('Erreur chargement données:', error);
+                alert('Erreur lors du chargement des données');
+            }
+        }
+
+        // Mettre à jour l'interface admin
+        function updateAdminUI() {
+            // Stats
+            document.getElementById('statEleves').textContent = studentsData.length;
+            document.getElementById('statFiches').textContent = studentsData.filter(s => s.ficheSignee).length;
+            document.getElementById('statBenevoles').textContent = volunteersData.length;
+            document.getElementById('statConfirmes').textContent = volunteersData.filter(v => v.status === 'confirmé').length;
+
+            // Table élèves
+            const studentsBody = document.getElementById('studentsBody');
+            if (studentsData.length === 0) {
+                studentsBody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Aucune inscription pour le moment</td></tr>';
+            } else {
+                studentsBody.innerHTML = studentsData.map(s => `
+                    <tr>
+                        <td><strong>${s.prenom} ${s.nom}</strong></td>
+                        <td>${s.classe}</td>
+                        <td>${s.email}</td>
+                        <td>${s.parentNom}</td>
+                        <td>${s.parentTel}</td>
+                        <td>
+                            <span class="badge ${s.ficheSignee ? 'badge-confirmed' : 'badge-pending'}">
+                                ${s.ficheSignee ? '✅ Fiche reçue' : '⏳ En attente'}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="action-btn confirm" onclick="toggleStudentStatus('${s.id}', ${!s.ficheSignee})">
+                                ${s.ficheSignee ? '↩️ Annuler' : '✅ Fiche reçue'}
+                            </button>
+                            <button class="action-btn delete" onclick="deleteStudent('${s.id}')">🗑️</button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // Table bénévoles
+            const volunteersBody = document.getElementById('volunteersBody');
+            if (volunteersData.length === 0) {
+                volunteersBody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Aucune inscription pour le moment</td></tr>';
+            } else {
+                volunteersBody.innerHTML = volunteersData.map(v => `
+                    <tr>
+                        <td><strong>${v.prenom} ${v.nom}</strong></td>
+                        <td>${v.email}</td>
+                        <td>${v.telephone}</td>
+                        <td>${(v.roles || []).map(r => `<span class="badge badge-pending" style="margin: 2px;">${r}</span>`).join(' ')}</td>
+                        <td>${(v.disponibilites || []).join(', ')}</td>
+                        <td>
+                            <span class="badge ${v.status === 'confirmé' ? 'badge-confirmed' : 'badge-pending'}">
+                                ${v.status === 'confirmé' ? '✅ Confirmé' : '⏳ En attente'}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="action-btn confirm" onclick="toggleVolunteerStatus('${v.id}', '${v.status === 'confirmé' ? 'en_attente' : 'confirmé'}')">
+                                ${v.status === 'confirmé' ? '↩️ Annuler' : '✅ Confirmer'}
+                            </button>
+                            <button class="action-btn delete" onclick="deleteVolunteer('${v.id}')">🗑️</button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Changer le status d'un élève
+        async function toggleStudentStatus(id, ficheSignee) {
+            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+                const student = studentsData.find(s => s.id === id);
+                if (student) student.ficheSignee = ficheSignee;
+                updateAdminUI();
+                return;
+            }
+
+            try {
+                await db.collection('inscriptions_eleves').doc(id).update({ 
+                    ficheSignee: ficheSignee,
+                    status: ficheSignee ? 'fiche_remise' : 'en_attente'
+                });
+                await loadAdminData();
+            } catch (error) {
+                console.error('Erreur mise à jour:', error);
+                alert('Erreur lors de la mise à jour');
+            }
+        }
+
+        // Changer le status d'un bénévole
+        async function toggleVolunteerStatus(id, newStatus) {
+            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+                const volunteer = volunteersData.find(v => v.id === id);
+                if (volunteer) volunteer.status = newStatus;
+                updateAdminUI();
+                return;
+            }
+
+            try {
+                await db.collection('inscriptions_benevoles').doc(id).update({ status: newStatus });
+                await loadAdminData();
+            } catch (error) {
+                console.error('Erreur mise à jour:', error);
+                alert('Erreur lors de la mise à jour');
+            }
+        }
+
+        // Supprimer un élève
+        async function deleteStudent(id) {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?')) return;
+
+            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+                studentsData = studentsData.filter(s => s.id !== id);
+                updateAdminUI();
+                return;
+            }
+
+            try {
+                await db.collection('inscriptions_eleves').doc(id).delete();
+                await loadAdminData();
+            } catch (error) {
+                console.error('Erreur suppression:', error);
+                alert('Erreur lors de la suppression');
+            }
+        }
+
+        // Supprimer un bénévole
+        async function deleteVolunteer(id) {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?')) return;
+
+            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+                volunteersData = volunteersData.filter(v => v.id !== id);
+                updateAdminUI();
+                return;
+            }
+
+            try {
+                await db.collection('inscriptions_benevoles').doc(id).delete();
+                await loadAdminData();
+            } catch (error) {
+                console.error('Erreur suppression:', error);
+                alert('Erreur lors de la suppression');
+            }
+        }
+
+        // Actualiser les données
+        function refreshData() {
+            loadAdminData();
+        }
+
+        // Changer d'onglet admin
+        function showAdminTab(tab) {
+            document.querySelectorAll('.admin-tab').forEach(t => {
+                t.classList.remove('btn-primary');
+                t.classList.add('btn-secondary');
+            });
+            event.target.classList.remove('btn-secondary');
+            event.target.classList.add('btn-primary');
+
+            document.getElementById('elevesTab').style.display = tab === 'eleves' ? 'block' : 'none';
+            document.getElementById('benevolesTab').style.display = tab === 'benevoles' ? 'block' : 'none';
+        }
+
+        // Exporter en CSV
+        function exportData() {
+            // Export élèves
+            let csvEleves = 'Prénom,Nom,Classe,Email,Téléphone,Parent,Tél Parent,Allergies,Régime,Fiche Signée\n';
+            studentsData.forEach(s => {
+                csvEleves += `"${s.prenom}","${s.nom}","${s.classe}","${s.email}","${s.telephone || ''}","${s.parentNom}","${s.parentTel}","${s.allergies || ''}","${(s.regimeAlimentaire || []).join('; ')}","${s.ficheSignee ? 'Oui' : 'Non'}"\n`;
+            });
+
+            // Export bénévoles
+            let csvBenevoles = 'Prénom,Nom,Email,Téléphone,Lien,Rôles,Disponibilités,Status\n';
+            volunteersData.forEach(v => {
+                csvBenevoles += `"${v.prenom}","${v.nom}","${v.email}","${v.telephone}","${v.lien || ''}","${(v.roles || []).join('; ')}","${(v.disponibilites || []).join('; ')}","${v.status}"\n`;
+            });
+
+            // Télécharger les fichiers
+            downloadCSV(csvEleves, 'inscriptions_eleves.csv');
+            setTimeout(() => downloadCSV(csvBenevoles, 'inscriptions_benevoles.csv'), 500);
+        }
+
+        function downloadCSV(content, filename) {
+            const blob = new Blob(['\ufeff' + content], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+        }
+    </script>
+</body>
+</html>
