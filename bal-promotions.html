@@ -1550,185 +1550,115 @@
 
         <!-- Admin Page -->
         <div id="admin" class="page">
-            <div class="form-container" id="adminLogin" style="max-width: 400px;">
-                <h2>🔐 Administration</h2>
-                <p class="form-subtitle">Accès réservé aux organisateurs</p>
-                
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label>Mot de passe</label>
-                        <input type="password" id="adminPassword" required placeholder="Entrez le mot de passe">
-                    </div>
-                    <button type="submit" class="submit-btn">Accéder</button>
-                </form>
-            </div>
+            <div class="form-container" style="max-width: 600px;">
+                <h2>📊 Administration</h2>
+                <p class="form-subtitle">Gestion des inscriptions via Google Sheets</p>
 
-            <div id="adminPanel" style="display: none;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-                    <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem;">
-                        📊 Tableau de bord
-                    </h2>
-                    <button class="btn btn-secondary" onclick="refreshData()">🔄 Actualiser</button>
+                <div class="info-card" style="margin-top: 2rem;">
+                    <h3>📋 Accéder aux inscriptions</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Toutes les inscriptions sont enregistrées dans un Google Sheet partagé. 
+                        Vous pouvez y consulter, filtrer et gérer les inscriptions directement.
+                    </p>
+                    
+                    <a href="https://docs.google.com/spreadsheets" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; text-decoration: none; margin-bottom: 1rem;">
+                        📊 Ouvrir Google Sheets
+                    </a>
+                    
+                    <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center;">
+                        Remplacez ce lien par l'URL de votre Google Sheet dans le code
+                    </p>
                 </div>
 
-                <!-- Stats -->
-                <div class="event-details" style="margin-bottom: 3rem;">
-                    <div class="detail-card">
-                        <div class="icon">👨‍🎓</div>
-                        <h3 id="statEleves">0</h3>
-                        <p>Élèves inscrits</p>
-                    </div>
-                    <div class="detail-card">
-                        <div class="icon">✅</div>
-                        <h3 id="statFiches">0</h3>
-                        <p>Fiches reçues</p>
-                    </div>
-                    <div class="detail-card">
-                        <div class="icon">🤝</div>
-                        <h3 id="statBenevoles">0</h3>
-                        <p>Bénévoles</p>
-                    </div>
-                    <div class="detail-card">
-                        <div class="icon">📋</div>
-                        <h3 id="statConfirmes">0</h3>
-                        <p>Bénévoles confirmés</p>
-                    </div>
+                <div class="info-card" style="margin-top: 1.5rem;">
+                    <h3>ℹ️ Fonctionnalités du Sheet</h3>
+                    <ul style="color: var(--text-muted);">
+                        <li>Onglet <strong>"Élèves"</strong> : toutes les inscriptions élèves</li>
+                        <li>Onglet <strong>"Bénévoles"</strong> : toutes les inscriptions bénévoles</li>
+                        <li>Ajoutez une colonne "Fiche reçue" pour le suivi</li>
+                        <li>Utilisez les filtres pour trier par classe, statut, etc.</li>
+                        <li>Partagez le Sheet avec le secrétariat</li>
+                    </ul>
                 </div>
 
-                <!-- Tabs -->
-                <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                    <button class="btn btn-primary admin-tab active" onclick="showAdminTab('eleves')">👨‍🎓 Élèves</button>
-                    <button class="btn btn-secondary admin-tab" onclick="showAdminTab('benevoles')">🤝 Bénévoles</button>
-                    <button class="btn btn-secondary admin-tab" onclick="exportData()">📥 Exporter CSV</button>
-                </div>
-
-                <!-- Students Table -->
-                <div id="elevesTab" class="admin-tab-content">
-                    <div class="info-card">
-                        <h3>Liste des élèves inscrits</h3>
-                        <div style="overflow-x: auto;">
-                            <table class="admin-table" id="studentsTable">
-                                <thead>
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Classe</th>
-                                        <th>Email</th>
-                                        <th>Parent</th>
-                                        <th>Tél. Parent</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="studentsBody">
-                                    <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Chargement...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Volunteers Table -->
-                <div id="benevolesTab" class="admin-tab-content" style="display: none;">
-                    <div class="info-card">
-                        <h3>Liste des bénévoles</h3>
-                        <div style="overflow-x: auto;">
-                            <table class="admin-table" id="volunteersTable">
-                                <thead>
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Email</th>
-                                        <th>Téléphone</th>
-                                        <th>Rôles</th>
-                                        <th>Disponibilités</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="volunteersBody">
-                                    <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Chargement...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="form-note" style="margin-top: 1.5rem;">
+                    <strong>💡 Astuce :</strong> Créez des règles de mise en forme conditionnelle dans Google Sheets pour colorer automatiquement les lignes selon le statut (fiche reçue ou non).
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    
     <script>
         // ============================================
-        // CONFIGURATION FIREBASE - À PERSONNALISER
+        // CONFIGURATION GOOGLE SHEETS - À PERSONNALISER
         // ============================================
-        // Remplace ces valeurs par celles de ton projet Firebase
-        // Tu les trouves dans : Console Firebase > Paramètres du projet > Vos applications > Config
+        // Remplace cette URL par l'URL de ton Google Apps Script (voir guide)
         
-        const firebaseConfig = {
-            apiKey: "VOTRE_API_KEY",
-            authDomain: "VOTRE_PROJET.firebaseapp.com",
-            projectId: "VOTRE_PROJECT_ID",
-            storageBucket: "VOTRE_PROJET.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "VOTRE_APP_ID"
-        };
+        const GOOGLE_SCRIPT_URL = 'VOTRE_URL_GOOGLE_SCRIPT';
 
-        // Initialiser Firebase
-        let db;
-        let firebaseInitialized = false;
+        let googleSheetsConfigured = false;
         
-        try {
-            firebase.initializeApp(firebaseConfig);
-            db = firebase.firestore();
-            firebaseInitialized = true;
-            console.log('✅ Firebase initialisé avec succès');
-        } catch (error) {
-            console.warn('⚠️ Firebase non configuré - Mode démonstration actif');
-            console.log('Pour activer Firebase, remplacez les valeurs dans firebaseConfig');
+        if (GOOGLE_SCRIPT_URL !== 'VOTRE_URL_GOOGLE_SCRIPT') {
+            googleSheetsConfigured = true;
+            console.log('✅ Google Sheets configuré');
+        } else {
+            console.log('⚠️ Google Sheets non configuré - Mode démonstration actif');
         }
 
         // Fonction pour sauvegarder une inscription élève
         async function saveStudentRegistration(data) {
-            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+            if (!googleSheetsConfigured) {
                 console.log('📝 Mode démo - Inscription élève:', data);
                 return { success: true, id: 'demo-' + Date.now(), demo: true };
             }
             
             try {
-                const docRef = await db.collection('inscriptions_eleves').add({
-                    ...data,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    status: 'en_attente', // en_attente, fiche_remise, confirmé
-                    ficheSignee: false
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: 'eleve',
+                        ...data,
+                        timestamp: new Date().toISOString()
+                    })
                 });
-                console.log('✅ Inscription élève enregistrée:', docRef.id);
-                return { success: true, id: docRef.id };
+                
+                console.log('✅ Inscription élève envoyée à Google Sheets');
+                return { success: true, id: Date.now() };
             } catch (error) {
-                console.error('❌ Erreur sauvegarde:', error);
+                console.error('❌ Erreur envoi:', error);
                 return { success: false, error: error.message };
             }
         }
 
         // Fonction pour sauvegarder une inscription bénévole
         async function saveVolunteerRegistration(data) {
-            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
+            if (!googleSheetsConfigured) {
                 console.log('📝 Mode démo - Inscription bénévole:', data);
                 return { success: true, id: 'demo-' + Date.now(), demo: true };
             }
             
             try {
-                const docRef = await db.collection('inscriptions_benevoles').add({
-                    ...data,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    status: 'en_attente', // en_attente, contacté, confirmé
-                    contacte: false
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        type: 'benevole',
+                        ...data,
+                        timestamp: new Date().toISOString()
+                    })
                 });
-                console.log('✅ Inscription bénévole enregistrée:', docRef.id);
-                return { success: true, id: docRef.id };
+                
+                console.log('✅ Inscription bénévole envoyée à Google Sheets');
+                return { success: true, id: Date.now() };
             } catch (error) {
-                console.error('❌ Erreur sauvegarde:', error);
+                console.error('❌ Erreur envoi:', error);
                 return { success: false, error: error.message };
             }
         }
@@ -1931,248 +1861,6 @@
                 month: 'long',
                 year: 'numeric'
             });
-        }
-
-        // ============================================
-        // ADMINISTRATION
-        // ============================================
-        
-        // Mot de passe admin (à changer!)
-        const ADMIN_PASSWORD = 'bal2025';
-        
-        let studentsData = [];
-        let volunteersData = [];
-
-        // Login admin
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const password = document.getElementById('adminPassword').value;
-            
-            if (password === ADMIN_PASSWORD) {
-                document.getElementById('adminLogin').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                loadAdminData();
-            } else {
-                alert('Mot de passe incorrect');
-            }
-        });
-
-        // Charger les données admin
-        async function loadAdminData() {
-            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
-                // Mode démo avec données fictives
-                studentsData = [
-                    { id: 'demo1', prenom: 'Marie', nom: 'Dupont', classe: '11VP1', email: 'marie@exemple.ch', parentNom: 'Jean Dupont', parentTel: '079 123 45 67', status: 'en_attente', ficheSignee: false },
-                    { id: 'demo2', prenom: 'Lucas', nom: 'Martin', classe: '11VG2', email: 'lucas@exemple.ch', parentNom: 'Sophie Martin', parentTel: '079 234 56 78', status: 'fiche_remise', ficheSignee: true }
-                ];
-                volunteersData = [
-                    { id: 'demo1', prenom: 'Pierre', nom: 'Durand', email: 'pierre@exemple.ch', telephone: '079 111 22 33', roles: ['bar', 'accueil'], disponibilites: ['debut', 'fin'], status: 'en_attente' },
-                    { id: 'demo2', prenom: 'Anne', nom: 'Bernard', email: 'anne@exemple.ch', telephone: '079 444 55 66', roles: ['securite'], disponibilites: ['toute'], status: 'confirmé' }
-                ];
-                updateAdminUI();
-                console.log('ℹ️ Mode démo - Données fictives affichées');
-                return;
-            }
-
-            try {
-                // Charger les élèves
-                const studentsSnapshot = await db.collection('inscriptions_eleves').orderBy('createdAt', 'desc').get();
-                studentsData = studentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-                // Charger les bénévoles
-                const volunteersSnapshot = await db.collection('inscriptions_benevoles').orderBy('createdAt', 'desc').get();
-                volunteersData = volunteersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-                updateAdminUI();
-            } catch (error) {
-                console.error('Erreur chargement données:', error);
-                alert('Erreur lors du chargement des données');
-            }
-        }
-
-        // Mettre à jour l'interface admin
-        function updateAdminUI() {
-            // Stats
-            document.getElementById('statEleves').textContent = studentsData.length;
-            document.getElementById('statFiches').textContent = studentsData.filter(s => s.ficheSignee).length;
-            document.getElementById('statBenevoles').textContent = volunteersData.length;
-            document.getElementById('statConfirmes').textContent = volunteersData.filter(v => v.status === 'confirmé').length;
-
-            // Table élèves
-            const studentsBody = document.getElementById('studentsBody');
-            if (studentsData.length === 0) {
-                studentsBody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Aucune inscription pour le moment</td></tr>';
-            } else {
-                studentsBody.innerHTML = studentsData.map(s => `
-                    <tr>
-                        <td><strong>${s.prenom} ${s.nom}</strong></td>
-                        <td>${s.classe}</td>
-                        <td>${s.email}</td>
-                        <td>${s.parentNom}</td>
-                        <td>${s.parentTel}</td>
-                        <td>
-                            <span class="badge ${s.ficheSignee ? 'badge-confirmed' : 'badge-pending'}">
-                                ${s.ficheSignee ? '✅ Fiche reçue' : '⏳ En attente'}
-                            </span>
-                        </td>
-                        <td>
-                            <button class="action-btn confirm" onclick="toggleStudentStatus('${s.id}', ${!s.ficheSignee})">
-                                ${s.ficheSignee ? '↩️ Annuler' : '✅ Fiche reçue'}
-                            </button>
-                            <button class="action-btn delete" onclick="deleteStudent('${s.id}')">🗑️</button>
-                        </td>
-                    </tr>
-                `).join('');
-            }
-
-            // Table bénévoles
-            const volunteersBody = document.getElementById('volunteersBody');
-            if (volunteersData.length === 0) {
-                volunteersBody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Aucune inscription pour le moment</td></tr>';
-            } else {
-                volunteersBody.innerHTML = volunteersData.map(v => `
-                    <tr>
-                        <td><strong>${v.prenom} ${v.nom}</strong></td>
-                        <td>${v.email}</td>
-                        <td>${v.telephone}</td>
-                        <td>${(v.roles || []).map(r => `<span class="badge badge-pending" style="margin: 2px;">${r}</span>`).join(' ')}</td>
-                        <td>${(v.disponibilites || []).join(', ')}</td>
-                        <td>
-                            <span class="badge ${v.status === 'confirmé' ? 'badge-confirmed' : 'badge-pending'}">
-                                ${v.status === 'confirmé' ? '✅ Confirmé' : '⏳ En attente'}
-                            </span>
-                        </td>
-                        <td>
-                            <button class="action-btn confirm" onclick="toggleVolunteerStatus('${v.id}', '${v.status === 'confirmé' ? 'en_attente' : 'confirmé'}')">
-                                ${v.status === 'confirmé' ? '↩️ Annuler' : '✅ Confirmer'}
-                            </button>
-                            <button class="action-btn delete" onclick="deleteVolunteer('${v.id}')">🗑️</button>
-                        </td>
-                    </tr>
-                `).join('');
-            }
-        }
-
-        // Changer le status d'un élève
-        async function toggleStudentStatus(id, ficheSignee) {
-            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
-                const student = studentsData.find(s => s.id === id);
-                if (student) student.ficheSignee = ficheSignee;
-                updateAdminUI();
-                return;
-            }
-
-            try {
-                await db.collection('inscriptions_eleves').doc(id).update({ 
-                    ficheSignee: ficheSignee,
-                    status: ficheSignee ? 'fiche_remise' : 'en_attente'
-                });
-                await loadAdminData();
-            } catch (error) {
-                console.error('Erreur mise à jour:', error);
-                alert('Erreur lors de la mise à jour');
-            }
-        }
-
-        // Changer le status d'un bénévole
-        async function toggleVolunteerStatus(id, newStatus) {
-            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
-                const volunteer = volunteersData.find(v => v.id === id);
-                if (volunteer) volunteer.status = newStatus;
-                updateAdminUI();
-                return;
-            }
-
-            try {
-                await db.collection('inscriptions_benevoles').doc(id).update({ status: newStatus });
-                await loadAdminData();
-            } catch (error) {
-                console.error('Erreur mise à jour:', error);
-                alert('Erreur lors de la mise à jour');
-            }
-        }
-
-        // Supprimer un élève
-        async function deleteStudent(id) {
-            if (!confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?')) return;
-
-            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
-                studentsData = studentsData.filter(s => s.id !== id);
-                updateAdminUI();
-                return;
-            }
-
-            try {
-                await db.collection('inscriptions_eleves').doc(id).delete();
-                await loadAdminData();
-            } catch (error) {
-                console.error('Erreur suppression:', error);
-                alert('Erreur lors de la suppression');
-            }
-        }
-
-        // Supprimer un bénévole
-        async function deleteVolunteer(id) {
-            if (!confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?')) return;
-
-            if (!firebaseInitialized || firebaseConfig.apiKey === "VOTRE_API_KEY") {
-                volunteersData = volunteersData.filter(v => v.id !== id);
-                updateAdminUI();
-                return;
-            }
-
-            try {
-                await db.collection('inscriptions_benevoles').doc(id).delete();
-                await loadAdminData();
-            } catch (error) {
-                console.error('Erreur suppression:', error);
-                alert('Erreur lors de la suppression');
-            }
-        }
-
-        // Actualiser les données
-        function refreshData() {
-            loadAdminData();
-        }
-
-        // Changer d'onglet admin
-        function showAdminTab(tab) {
-            document.querySelectorAll('.admin-tab').forEach(t => {
-                t.classList.remove('btn-primary');
-                t.classList.add('btn-secondary');
-            });
-            event.target.classList.remove('btn-secondary');
-            event.target.classList.add('btn-primary');
-
-            document.getElementById('elevesTab').style.display = tab === 'eleves' ? 'block' : 'none';
-            document.getElementById('benevolesTab').style.display = tab === 'benevoles' ? 'block' : 'none';
-        }
-
-        // Exporter en CSV
-        function exportData() {
-            // Export élèves
-            let csvEleves = 'Prénom,Nom,Classe,Email,Téléphone,Parent,Tél Parent,Allergies,Régime,Fiche Signée\n';
-            studentsData.forEach(s => {
-                csvEleves += `"${s.prenom}","${s.nom}","${s.classe}","${s.email}","${s.telephone || ''}","${s.parentNom}","${s.parentTel}","${s.allergies || ''}","${(s.regimeAlimentaire || []).join('; ')}","${s.ficheSignee ? 'Oui' : 'Non'}"\n`;
-            });
-
-            // Export bénévoles
-            let csvBenevoles = 'Prénom,Nom,Email,Téléphone,Lien,Rôles,Disponibilités,Status\n';
-            volunteersData.forEach(v => {
-                csvBenevoles += `"${v.prenom}","${v.nom}","${v.email}","${v.telephone}","${v.lien || ''}","${(v.roles || []).join('; ')}","${(v.disponibilites || []).join('; ')}","${v.status}"\n`;
-            });
-
-            // Télécharger les fichiers
-            downloadCSV(csvEleves, 'inscriptions_eleves.csv');
-            setTimeout(() => downloadCSV(csvBenevoles, 'inscriptions_benevoles.csv'), 500);
-        }
-
-        function downloadCSV(content, filename) {
-            const blob = new Blob(['\ufeff' + content], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = filename;
-            link.click();
         }
     </script>
 </body>
