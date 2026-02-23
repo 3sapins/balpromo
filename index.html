@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bal de Promotions 2025 | Collège des Trois-Sapins</title>
+    <title>Bal de Promotions 2026 | Collège des Trois-Sapins</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -115,6 +115,7 @@
         nav {
             display: flex;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
 
         nav button {
@@ -210,7 +211,7 @@
         .event-details {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
             flex-wrap: wrap;
             margin: 3rem 0;
         }
@@ -219,8 +220,8 @@
             background: var(--glass);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 2rem;
-            min-width: 200px;
+            padding: 1.5rem;
+            min-width: 180px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -238,13 +239,14 @@
 
         .detail-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--gold);
         }
 
         .detail-card p {
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         .cta-buttons {
@@ -256,11 +258,11 @@
         }
 
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 50px;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -291,6 +293,17 @@
             background: var(--gold);
             color: var(--primary);
             transform: translateY(-3px);
+        }
+
+        .btn-fondue {
+            background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4);
+        }
+
+        .btn-fondue:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 152, 0, 0.5);
         }
 
         /* Info section */
@@ -722,79 +735,63 @@
             color: var(--text-muted);
         }
 
-        /* Admin section (hidden by default) */
-        .admin-section {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--glass-border);
-        }
-
-        .admin-table {
+        /* Fondue table styles */
+        .fondue-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin: 1.5rem 0;
         }
 
-        .admin-table th, .admin-table td {
-            padding: 1rem;
+        .fondue-table th, .fondue-table td {
+            padding: 0.75rem;
             text-align: left;
             border-bottom: 1px solid var(--glass-border);
         }
 
-        .admin-table th {
+        .fondue-table th {
             background: var(--glass);
             color: var(--gold);
             font-weight: 600;
         }
 
-        .admin-table tr:hover td {
+        .fondue-table input {
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        .fondue-table select {
+            padding: 0.5rem;
+        }
+
+        .add-row-btn {
+            padding: 0.75rem 1.5rem;
             background: var(--glass);
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .badge-pending {
-            background: rgba(244, 197, 66, 0.2);
+            border: 1px solid var(--gold);
             color: var(--gold);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
         }
 
-        .badge-confirmed {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4caf50;
+        .add-row-btn:hover {
+            background: var(--gold);
+            color: var(--primary);
         }
 
-        .admin-tab-content {
-            animation: fadeIn 0.3s ease;
-        }
-
-        .action-btn {
-            padding: 0.4rem 0.8rem;
+        .remove-row-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(233, 69, 96, 0.2);
             border: none;
+            color: var(--accent);
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.85rem;
-            margin: 0.2rem;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
-        .action-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .action-btn.confirm {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4caf50;
-        }
-
-        .action-btn.delete {
-            background: rgba(233, 69, 96, 0.2);
-            color: var(--accent);
+        .remove-row-btn:hover {
+            background: var(--accent);
+            color: white;
         }
 
         /* Countdown */
@@ -855,7 +852,6 @@
 
         /* Print styles */
         @media print {
-            /* Reset tout pour l'impression */
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
@@ -869,31 +865,15 @@
                 padding: 0 !important;
             }
 
-            /* Cacher tout sauf la fiche */
-            header, 
-            nav, 
-            .bg-animation, 
-            .hero, 
-            .cta-buttons, 
-            .print-btn, 
-            .form-container, 
-            .info-section,
-            .success-message,
-            .event-details,
-            .info-grid,
-            #home,
-            #benevole,
-            #admin,
-            #studentFormContainer,
-            #volunteerFormContainer,
-            #studentSuccess,
-            .sparkle,
-            .floating-shape {
+            header, nav, .bg-animation, .hero, .cta-buttons, .print-btn, 
+            .form-container, .info-section, .success-message, .event-details,
+            .info-grid, #home, #benevole, #admin, #fondue,
+            #studentFormContainer, #volunteerFormContainer, #fondueFormContainer,
+            #studentSuccess, .sparkle, .floating-shape {
                 display: none !important;
                 visibility: hidden !important;
             }
 
-            /* Forcer l'affichage de la page inscription et de la fiche */
             main {
                 padding: 0 !important;
                 margin: 0 !important;
@@ -914,7 +894,6 @@
                 display: block !important;
             }
 
-            /* La fiche d'impression elle-même */
             .print-sheet {
                 display: block !important;
                 visibility: visible !important;
@@ -935,7 +914,6 @@
                 visibility: visible !important;
             }
 
-            /* Styles de la fiche pour impression */
             .print-header {
                 text-align: center;
                 border-bottom: 2px solid #1a1a2e !important;
@@ -1064,11 +1042,12 @@
     <header>
         <div class="logo">
             <div class="logo-icon">🎭</div>
-            <div class="logo-text">Bal de <span>Promotions</span> 2025</div>
+            <div class="logo-text">Bal de <span>Promotions</span> 2026</div>
         </div>
         <nav>
             <button class="active" onclick="showPage('home')">Accueil</button>
             <button onclick="showPage('inscription')">Inscription Élève</button>
+            <button onclick="showPage('fondue')">🧀 Vente Fondues</button>
             <button onclick="showPage('benevole')">Devenir Bénévole</button>
             <button onclick="showPage('admin')" style="border-color: var(--gold);">🔐 Admin</button>
         </nav>
@@ -1078,7 +1057,7 @@
         <!-- Home Page -->
         <div id="home" class="page active">
             <section class="hero">
-                <h1>Bal de Promotions 2025</h1>
+                <h1>Bal de Promotions 2026</h1>
                 <p class="subtitle">Une soirée inoubliable pour célébrer votre réussite</p>
                 <p class="school-name">Collège des Trois-Sapins | Échallens</p>
 
@@ -1106,28 +1085,41 @@
                     <div class="detail-card">
                         <div class="icon">📅</div>
                         <h3>Date</h3>
-                        <p>Vendredi 27 juin 2025</p>
+                        <p>Mercredi 24 juin 2026</p>
                     </div>
                     <div class="detail-card">
-                        <div class="icon">🕖</div>
-                        <h3>Horaire</h3>
-                        <p>19h00 - 23h30</p>
+                        <div class="icon">🚪</div>
+                        <h3>Entrée</h3>
+                        <p>19h30</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">🌙</div>
+                        <h3>Fin du bal</h3>
+                        <p>01h00</p>
                     </div>
                     <div class="detail-card">
                         <div class="icon">📍</div>
                         <h3>Lieu</h3>
-                        <p>Salle polyvalente<br>Collège des Trois-Sapins</p>
+                        <p>Grande salle<br>Poliez-Pittet</p>
                     </div>
                     <div class="detail-card">
-                        <div class="icon">👗</div>
-                        <h3>Dress Code</h3>
-                        <p>Tenue de soirée élégante</p>
+                        <div class="icon">🎟️</div>
+                        <h3>Entrée</h3>
+                        <p>CHF 10.-<br><small>(1 boisson incluse)</small></p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="icon">🎧</div>
+                        <h3>Animation</h3>
+                        <p>DJ & soirée dansante</p>
                     </div>
                 </div>
 
                 <div class="cta-buttons">
                     <button class="btn btn-primary" onclick="showPage('inscription')">
-                        ✨ S'inscrire maintenant
+                        ✨ S'inscrire au bal
+                    </button>
+                    <button class="btn btn-fondue" onclick="showPage('fondue')">
+                        🧀 Vendre des fondues
                     </button>
                     <button class="btn btn-secondary" onclick="showPage('benevole')">
                         🤝 Devenir bénévole
@@ -1140,33 +1132,30 @@
                     <div class="info-card">
                         <h3>🎉 Programme de la soirée</h3>
                         <ul>
-                            <li>19h00 : Accueil des élèves et apéritif</li>
-                            <li>19h30 : Discours de bienvenue</li>
-                            <li>20h00 : Remise des prix et distinctions</li>
-                            <li>20h30 : Ouverture du bal</li>
-                            <li>21h00 - 23h00 : Soirée dansante & animations</li>
-                            <li>23h30 : Fin de la soirée</li>
+                            <li>19h30 : Ouverture des portes</li>
+                            <li>20h00 : Début de la soirée</li>
+                            <li>20h00 - 01h00 : DJ & soirée dansante</li>
+                            <li>01h00 : Fin du bal - retour avec les parents</li>
                         </ul>
                     </div>
                     <div class="info-card">
                         <h3>📋 Informations pratiques</h3>
                         <ul>
                             <li>Ouvert aux élèves de 11e année et RAC</li>
-                            <li>Autorisation parentale obligatoire</li>
-                            <li>Bar avec boissons soft uniquement</li>
-                            <li>Photographe professionnel présent</li>
-                            <li>Vestiaire à disposition</li>
-                            <li>Encadrement par des bénévoles adultes</li>
+                            <li>Entrée : CHF 10.- (1 boisson offerte)</li>
+                            <li>Bar : softs et hot dogs (paiement cash)</li>
+                            <li>Inscription en ligne obligatoire</li>
+                            <li>Autorisation parentale signée requise</li>
                         </ul>
                     </div>
                     <div class="info-card">
-                        <h3>⚠️ À savoir</h3>
+                        <h3>⚠️ Règles importantes</h3>
                         <ul>
-                            <li>Inscription obligatoire avant le 13 juin</li>
-                            <li>Fiche d'autorisation à remettre au secrétariat</li>
+                            <li>Inscription à rendre avant le <strong>23 mai 2026</strong></li>
+                            <li>Aucune sortie possible pendant la soirée</li>
+                            <li>Retour obligatoire avec les parents à 01h00</li>
                             <li>Aucun alcool ni substance illicite</li>
                             <li>Comportement respectueux exigé</li>
-                            <li>Sortie anticipée avec autorisation uniquement</li>
                         </ul>
                     </div>
                 </div>
@@ -1177,7 +1166,7 @@
         <div id="inscription" class="page">
             <div class="form-container" id="studentFormContainer">
                 <h2>Inscription Élève</h2>
-                <p class="form-subtitle">Remplis ce formulaire pour t'inscrire au Bal de Promotions 2025</p>
+                <p class="form-subtitle">Remplis ce formulaire pour t'inscrire au Bal de Promotions 2026</p>
 
                 <form id="studentForm">
                     <div class="form-row">
@@ -1249,34 +1238,8 @@
                         <textarea name="allergies" rows="2" placeholder="Indique ici toute allergie ou information médicale à connaître (facultatif)"></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label>Restrictions alimentaires</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="regime" value="vegetarien">
-                                Végétarien
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="regime" value="vegan">
-                                Végan
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="regime" value="halal">
-                                Halal
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="regime" value="sans-gluten">
-                                Sans gluten
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="regime" value="sans-lactose">
-                                Sans lactose
-                            </label>
-                        </div>
-                    </div>
-
                     <div class="form-note">
-                        <strong>📋 Important :</strong> Après ton inscription, une fiche d'autorisation sera générée. Tu devras l'imprimer, la faire signer par ton représentant légal, puis la déposer au secrétariat <strong>avant le 13 juin 2025</strong>.
+                        <strong>📋 Important :</strong> Après ton inscription, une fiche d'autorisation sera générée. Tu devras l'imprimer, la faire signer par ton représentant légal, puis la déposer au secrétariat <strong>avant le 23 mai 2026</strong>.
                     </div>
 
                     <button type="submit" class="submit-btn">
@@ -1289,14 +1252,14 @@
             <div class="success-message" id="studentSuccess">
                 <div class="success-icon">✓</div>
                 <h3>Inscription enregistrée !</h3>
-                <p>Ta fiche d'autorisation est prête à être imprimée.<br>N'oublie pas de la faire signer et de la remettre au secrétariat.</p>
+                <p>Ta fiche d'autorisation est prête à être imprimée.<br>N'oublie pas de la faire signer et de la remettre au secrétariat avant le 23 mai.</p>
             </div>
 
             <!-- Print sheet -->
             <div class="print-sheet" id="printSheet">
                 <div class="print-header">
-                    <h1>🎭 Bal de Promotions 2025</h1>
-                    <p>Collège des Trois-Sapins | Échallens</p>
+                    <h1>🎭 Bal de Promotions 2026</h1>
+                    <p>Collège des Trois-Sapins | Grande salle de Poliez-Pittet</p>
                     <p><strong>Fiche d'inscription et autorisation parentale</strong></p>
                 </div>
 
@@ -1350,35 +1313,36 @@
                         <span class="print-label">Allergies / Médical :</span>
                         <span class="print-value" id="print-allergies"></span>
                     </div>
-                    <div class="print-row">
-                        <span class="print-label">Régime alimentaire :</span>
-                        <span class="print-value" id="print-regime"></span>
-                    </div>
                 </div>
 
                 <div class="print-section">
                     <h3>📅 Détails de l'événement</h3>
                     <div class="print-row">
                         <span class="print-label">Date :</span>
-                        <span class="print-value">Vendredi 27 juin 2025</span>
+                        <span class="print-value">Mercredi 24 juin 2026</span>
                     </div>
                     <div class="print-row">
                         <span class="print-label">Horaire :</span>
-                        <span class="print-value">19h00 - 23h30</span>
+                        <span class="print-value">19h30 - 01h00</span>
                     </div>
                     <div class="print-row">
                         <span class="print-label">Lieu :</span>
-                        <span class="print-value">Salle polyvalente, Collège des Trois-Sapins</span>
+                        <span class="print-value">Grande salle, Poliez-Pittet</span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Entrée :</span>
+                        <span class="print-value">CHF 10.- (1 boisson incluse)</span>
                     </div>
                 </div>
 
                 <div class="signature-section">
                     <h3>✍️ Autorisation parentale</h3>
-                    <p>Je soussigné(e), représentant(e) légal(e) de l'élève mentionné(e) ci-dessus, autorise sa participation au Bal de Promotions 2025 du Collège des Trois-Sapins.</p>
+                    <p>Je soussigné(e), représentant(e) légal(e) de l'élève mentionné(e) ci-dessus, autorise sa participation au Bal de Promotions 2026 du Collège des Trois-Sapins.</p>
                     <p style="margin-top: 10px;">Je déclare :</p>
                     <ul style="margin-left: 20px; margin-top: 5px; color: #555;">
                         <li>Avoir pris connaissance des horaires et du lieu de l'événement</li>
-                        <li>M'engager à venir chercher mon enfant à 23h30 ou autoriser son retour autonome</li>
+                        <li><strong>M'engager à venir chercher mon enfant à 01h00</strong></li>
+                        <li>Comprendre qu'aucune sortie n'est possible pendant la soirée</li>
                         <li>Être joignable au numéro indiqué pendant toute la durée de la soirée</li>
                         <li>Avoir informé les organisateurs de toute allergie ou condition médicale importante</li>
                     </ul>
@@ -1396,13 +1360,186 @@
                 </div>
 
                 <div class="print-footer">
-                    <p>📌 <strong>Document à remettre au secrétariat avant le 13 juin 2025</strong></p>
-                    <p>Collège des Trois-Sapins | Échallens | www.trois-sapins.ch</p>
+                    <p>📌 <strong>Document à remettre au secrétariat avant le 23 mai 2026</strong></p>
+                    <p>Collège des Trois-Sapins | Échallens</p>
                 </div>
             </div>
 
             <button class="print-btn" id="printBtn" style="display: none;" onclick="window.print()">
                 🖨️ Imprimer la fiche d'autorisation
+            </button>
+        </div>
+
+        <!-- Vente Fondues -->
+        <div id="fondue" class="page">
+            <div class="form-container" id="fondueFormContainer" style="max-width: 900px;">
+                <h2>🧀 Vente de Fondues</h2>
+                <p class="form-subtitle">Aide à financer le bal en vendant des fondues !</p>
+
+                <div class="info-card" style="margin-bottom: 2rem;">
+                    <h3>📋 Comment ça marche ?</h3>
+                    <ul>
+                        <li><strong>Prix de vente : CHF 15.- pour 400g de fondue</strong></li>
+                        <li>Note les commandes des personnes intéressées</li>
+                        <li>Encaisse le paiement (cash ou Twint au 079 744 95 39)</li>
+                        <li>Enregistre les ventes ci-dessous</li>
+                    </ul>
+                </div>
+
+                <form id="fondueForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ton prénom <span class="required">*</span></label>
+                            <input type="text" name="vendeurPrenom" required placeholder="Ton prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Ton nom <span class="required">*</span></label>
+                            <input type="text" name="vendeurNom" required placeholder="Ton nom">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Classe <span class="required">*</span></label>
+                            <select name="vendeurClasse" required>
+                                <option value="">Sélectionne ta classe</option>
+                                <option value="11VG1">11VG1</option>
+                                <option value="11VG2">11VG2</option>
+                                <option value="11VG3">11VG3</option>
+                                <option value="11VP1">11VP1</option>
+                                <option value="11VP2">11VP2</option>
+                                <option value="11VP3">11VP3</option>
+                                <option value="RAC1">RAC1</option>
+                                <option value="RAC2">RAC2</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Ton email <span class="required">*</span></label>
+                            <input type="email" name="vendeurEmail" required placeholder="ton.email@exemple.ch">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size: 1.2rem; margin-bottom: 1rem;">📝 Liste des commandes</label>
+                        <table class="fondue-table" id="fondueTable">
+                            <thead>
+                                <tr>
+                                    <th>Prénom</th>
+                                    <th>Nom</th>
+                                    <th>Nb portions</th>
+                                    <th>Payé ?</th>
+                                    <th>Mode</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="fondueTableBody">
+                                <tr>
+                                    <td><input type="text" name="clientPrenom[]" placeholder="Prénom"></td>
+                                    <td><input type="text" name="clientNom[]" placeholder="Nom"></td>
+                                    <td><input type="number" name="clientPortions[]" min="1" value="1" style="width: 80px;"></td>
+                                    <td>
+                                        <select name="clientPaye[]">
+                                            <option value="non">Non</option>
+                                            <option value="oui">Oui</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="clientMode[]">
+                                            <option value="">-</option>
+                                            <option value="cash">Cash</option>
+                                            <option value="twint">Twint</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="add-row-btn" onclick="addFondueRow()">+ Ajouter une ligne</button>
+                    </div>
+
+                    <div class="form-note">
+                        <strong>💰 Paiement Twint :</strong> Les clients peuvent payer par Twint au <strong>079 744 95 39</strong>. Note bien le mode de paiement pour chaque commande.
+                    </div>
+
+                    <button type="submit" class="submit-btn" style="background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);">
+                        🧀 Enregistrer mes ventes
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success message -->
+            <div class="success-message" id="fondueSuccess">
+                <div class="success-icon" style="background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);">🧀</div>
+                <h3>Ventes enregistrées !</h3>
+                <p>Merci pour ta participation à la vente de fondues !<br>Tu peux imprimer ta feuille de suivi ci-dessous.</p>
+                <button class="btn btn-secondary" onclick="showPage('home')" style="margin-top: 1rem;">
+                    ← Retour à l'accueil
+                </button>
+            </div>
+
+            <!-- Print sheet for fondue -->
+            <div class="print-sheet" id="fonduePrintSheet">
+                <div class="print-header">
+                    <h1>🧀 Vente de Fondues - Bal de Promotions 2026</h1>
+                    <p>Collège des Trois-Sapins</p>
+                    <p><strong>Feuille de suivi des ventes</strong></p>
+                </div>
+
+                <div class="print-section">
+                    <h3>👤 Vendeur</h3>
+                    <div class="print-row">
+                        <span class="print-label">Nom :</span>
+                        <span class="print-value" id="print-vendeur-nom"></span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Classe :</span>
+                        <span class="print-value" id="print-vendeur-classe"></span>
+                    </div>
+                </div>
+
+                <div class="print-section">
+                    <h3>📋 Informations vente</h3>
+                    <div class="print-row">
+                        <span class="print-label">Prix par portion :</span>
+                        <span class="print-value">CHF 15.- (400g)</span>
+                    </div>
+                    <div class="print-row">
+                        <span class="print-label">Paiement Twint :</span>
+                        <span class="print-value">079 744 95 39</span>
+                    </div>
+                </div>
+
+                <div class="print-section">
+                    <h3>📝 Commandes</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <thead>
+                            <tr style="background: #1a1a2e; color: white;">
+                                <th style="padding: 10px; text-align: left;">Prénom Nom</th>
+                                <th style="padding: 10px; text-align: center;">Portions</th>
+                                <th style="padding: 10px; text-align: center;">Montant</th>
+                                <th style="padding: 10px; text-align: center;">Payé</th>
+                                <th style="padding: 10px; text-align: center;">Mode</th>
+                            </tr>
+                        </thead>
+                        <tbody id="print-fondue-table">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="print-section" style="margin-top: 20px;">
+                    <div class="print-row" style="font-weight: bold; font-size: 1.1rem;">
+                        <span class="print-label">TOTAL :</span>
+                        <span class="print-value" id="print-fondue-total"></span>
+                    </div>
+                </div>
+
+                <div class="print-footer">
+                    <p>Bal de Promotions 2026 | Collège des Trois-Sapins</p>
+                </div>
+            </div>
+
+            <button class="print-btn" id="fonduePrintBtn" style="display: none; background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);" onclick="printFondue()">
+                🖨️ Imprimer la feuille de suivi
             </button>
         </div>
 
@@ -1466,7 +1603,7 @@
                                 <input type="checkbox" name="role" value="bar">
                                 <div class="role-icon">🥤</div>
                                 <h4>Bar</h4>
-                                <p>Service des boissons et snacks au bar</p>
+                                <p>Service des boissons et hot dogs</p>
                             </label>
                             <label class="role-card">
                                 <input type="checkbox" name="role" value="securite">
@@ -1478,19 +1615,13 @@
                                 <input type="checkbox" name="role" value="decoration">
                                 <div class="role-icon">🎨</div>
                                 <h4>Décoration</h4>
-                                <p>Aide à l'installation et décoration (avant la soirée)</p>
+                                <p>Aide à l'installation (avant la soirée)</p>
                             </label>
                             <label class="role-card">
                                 <input type="checkbox" name="role" value="rangement">
                                 <div class="role-icon">🧹</div>
                                 <h4>Rangement</h4>
-                                <p>Aide au rangement et nettoyage (après la soirée)</p>
-                            </label>
-                            <label class="role-card">
-                                <input type="checkbox" name="role" value="photos">
-                                <div class="role-icon">📸</div>
-                                <h4>Photos</h4>
-                                <p>Aide au photographe, gestion du photobooth</p>
+                                <p>Aide au rangement (après la soirée)</p>
                             </label>
                         </div>
                     </div>
@@ -1504,11 +1635,11 @@
                             </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" name="dispo" value="debut">
-                                Début de soirée (19h-21h)
+                                Début (19h30-22h)
                             </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" name="dispo" value="fin">
-                                Fin de soirée (21h-23h30)
+                                Fin (22h-01h)
                             </label>
                             <label class="checkbox-item">
                                 <input type="checkbox" name="dispo" value="apres">
@@ -1571,18 +1702,12 @@
                 </div>
 
                 <div class="info-card" style="margin-top: 1.5rem;">
-                    <h3>ℹ️ Fonctionnalités du Sheet</h3>
+                    <h3>ℹ️ Onglets disponibles</h3>
                     <ul style="color: var(--text-muted);">
-                        <li>Onglet <strong>"Élèves"</strong> : toutes les inscriptions élèves</li>
-                        <li>Onglet <strong>"Bénévoles"</strong> : toutes les inscriptions bénévoles</li>
-                        <li>Ajoutez une colonne "Fiche reçue" pour le suivi</li>
-                        <li>Utilisez les filtres pour trier par classe, statut, etc.</li>
-                        <li>Partagez le Sheet avec le secrétariat</li>
+                        <li>Onglet <strong>"Eleves"</strong> : inscriptions au bal</li>
+                        <li>Onglet <strong>"Benevoles"</strong> : inscriptions bénévoles</li>
+                        <li>Onglet <strong>"Fondues"</strong> : ventes de fondues</li>
                     </ul>
-                </div>
-
-                <div class="form-note" style="margin-top: 1.5rem;">
-                    <strong>💡 Astuce :</strong> Créez des règles de mise en forme conditionnelle dans Google Sheets pour colorer automatiquement les lignes selon le statut (fiche reçue ou non).
                 </div>
             </div>
         </div>
@@ -1590,11 +1715,9 @@
 
     <script>
         // ============================================
-        // CONFIGURATION GOOGLE SHEETS - À PERSONNALISER
+        // CONFIGURATION GOOGLE SHEETS
         // ============================================
-        // Remplace cette URL par l'URL de ton Google Apps Script (voir guide)
-        
-        const GOOGLE_SCRIPT_URL = 'VOTRE_URL_GOOGLE_SCRIPT';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby3a9UXTG8EbWd25chdKSbYaKzdjQtrbX2B1SwfyFZ3lnsce47csvAgXcsWQMk3AMlF/exec';
 
         let googleSheetsConfigured = false;
         
@@ -1616,20 +1739,13 @@
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        type: 'eleve',
-                        ...data,
-                        timestamp: new Date().toISOString()
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'eleve', ...data, timestamp: new Date().toISOString() })
                 });
-                
-                console.log('✅ Inscription élève envoyée à Google Sheets');
+                console.log('✅ Inscription élève envoyée');
                 return { success: true, id: Date.now() };
             } catch (error) {
-                console.error('❌ Erreur envoi:', error);
+                console.error('❌ Erreur:', error);
                 return { success: false, error: error.message };
             }
         }
@@ -1645,20 +1761,35 @@
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        type: 'benevole',
-                        ...data,
-                        timestamp: new Date().toISOString()
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'benevole', ...data, timestamp: new Date().toISOString() })
                 });
-                
-                console.log('✅ Inscription bénévole envoyée à Google Sheets');
+                console.log('✅ Inscription bénévole envoyée');
                 return { success: true, id: Date.now() };
             } catch (error) {
-                console.error('❌ Erreur envoi:', error);
+                console.error('❌ Erreur:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Fonction pour sauvegarder une vente de fondue
+        async function saveFondueRegistration(data) {
+            if (!googleSheetsConfigured) {
+                console.log('📝 Mode démo - Vente fondue:', data);
+                return { success: true, id: 'demo-' + Date.now(), demo: true };
+            }
+            
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'fondue', ...data, timestamp: new Date().toISOString() })
+                });
+                console.log('✅ Vente fondue envoyée');
+                return { success: true, id: Date.now() };
+            } catch (error) {
+                console.error('❌ Erreur:', error);
                 return { success: false, error: error.message };
             }
         }
@@ -1675,8 +1806,6 @@
                 sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
                 bg.appendChild(sparkle);
             }
-
-            // Floating shapes
             for (let i = 0; i < 5; i++) {
                 const shape = document.createElement('div');
                 shape.className = 'floating-shape';
@@ -1691,9 +1820,9 @@
         }
         createSparkles();
 
-        // Countdown
+        // Countdown - 24 juin 2026, 19h30
         function updateCountdown() {
-            const eventDate = new Date('2025-06-27T19:00:00');
+            const eventDate = new Date('2026-06-24T19:30:00');
             const now = new Date();
             const diff = eventDate - now;
 
@@ -1716,10 +1845,8 @@
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            
             document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-
+            if (event && event.target) event.target.classList.add('active');
             window.scrollTo(0, 0);
         }
 
@@ -1737,6 +1864,39 @@
             });
         });
 
+        // Fondue table management
+        function addFondueRow() {
+            const tbody = document.getElementById('fondueTableBody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><input type="text" name="clientPrenom[]" placeholder="Prénom"></td>
+                <td><input type="text" name="clientNom[]" placeholder="Nom"></td>
+                <td><input type="number" name="clientPortions[]" min="1" value="1" style="width: 80px;"></td>
+                <td>
+                    <select name="clientPaye[]">
+                        <option value="non">Non</option>
+                        <option value="oui">Oui</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="clientMode[]">
+                        <option value="">-</option>
+                        <option value="cash">Cash</option>
+                        <option value="twint">Twint</option>
+                    </select>
+                </td>
+                <td><button type="button" class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
+            `;
+            tbody.appendChild(row);
+        }
+
+        function removeRow(btn) {
+            const tbody = document.getElementById('fondueTableBody');
+            if (tbody.children.length > 1) {
+                btn.closest('tr').remove();
+            }
+        }
+
         // Student form submission
         document.getElementById('studentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1744,11 +1904,9 @@
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
-            submitBtn.textContent = '⏳ Enregistrement en cours...';
+            submitBtn.textContent = '⏳ Enregistrement...';
             
             const formData = new FormData(this);
-            
-            // Préparer les données pour Firebase
             const studentData = {
                 prenom: formData.get('prenom'),
                 nom: formData.get('nom'),
@@ -1760,15 +1918,12 @@
                 parentNom: formData.get('parentNom'),
                 parentTel: formData.get('parentTel'),
                 parentEmail: formData.get('parentEmail') || '',
-                allergies: formData.get('allergies') || '',
-                regimeAlimentaire: formData.getAll('regime')
+                allergies: formData.get('allergies') || ''
             };
             
-            // Sauvegarder dans Firebase
             const result = await saveStudentRegistration(studentData);
             
             if (result.success) {
-                // Fill print sheet
                 document.getElementById('print-nom').textContent = studentData.prenom + ' ' + studentData.nom;
                 document.getElementById('print-naissance').textContent = formatDate(studentData.dateNaissance);
                 document.getElementById('print-classe').textContent = studentData.classe;
@@ -1779,17 +1934,11 @@
                 document.getElementById('print-parent-tel').textContent = studentData.parentTel;
                 document.getElementById('print-parent-email').textContent = studentData.parentEmail || 'Non renseigné';
                 document.getElementById('print-allergies').textContent = studentData.allergies || 'Aucune';
-                document.getElementById('print-regime').textContent = studentData.regimeAlimentaire.length > 0 ? studentData.regimeAlimentaire.join(', ') : 'Aucune restriction';
 
-                // Show success and print sheet
                 document.getElementById('studentFormContainer').style.display = 'none';
                 document.getElementById('studentSuccess').classList.add('show');
                 document.getElementById('printSheet').classList.add('show');
                 document.getElementById('printBtn').style.display = 'block';
-                
-                if (result.demo) {
-                    console.log('ℹ️ Mode démonstration - Configurez Firebase pour sauvegarder réellement les données');
-                }
             } else {
                 alert('Erreur lors de l\'enregistrement. Veuillez réessayer.');
                 submitBtn.disabled = false;
@@ -1802,15 +1951,12 @@
             e.preventDefault();
             
             const formData = new FormData(this);
-            
-            // Check if at least one role is selected
             const roles = formData.getAll('role');
             if (roles.length === 0) {
                 alert('Veuillez sélectionner au moins un rôle.');
                 return;
             }
 
-            // Check if at least one availability is selected
             const dispos = formData.getAll('dispo');
             if (dispos.length === 0) {
                 alert('Veuillez indiquer vos disponibilités.');
@@ -1818,11 +1964,9 @@
             }
 
             const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
-            submitBtn.textContent = '⏳ Enregistrement en cours...';
+            submitBtn.textContent = '⏳ Enregistrement...';
 
-            // Préparer les données pour Firebase
             const volunteerData = {
                 prenom: formData.get('prenom'),
                 nom: formData.get('nom'),
@@ -1835,25 +1979,103 @@
                 message: formData.get('message') || ''
             };
 
-            // Sauvegarder dans Firebase
             const result = await saveVolunteerRegistration(volunteerData);
 
             if (result.success) {
-                // Show success
                 document.getElementById('volunteerFormContainer').style.display = 'none';
                 document.getElementById('volunteerSuccess').classList.add('show');
-                
-                if (result.demo) {
-                    console.log('ℹ️ Mode démonstration - Configurez Firebase pour sauvegarder réellement les données');
-                }
             } else {
                 alert('Erreur lors de l\'enregistrement. Veuillez réessayer.');
                 submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                submitBtn.textContent = '🤝 M\'inscrire comme bénévole';
             }
         });
 
-        // Format date helper
+        // Fondue form submission
+        document.getElementById('fondueForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Enregistrement...';
+
+            // Collect all client rows
+            const prenoms = formData.getAll('clientPrenom[]');
+            const noms = formData.getAll('clientNom[]');
+            const portions = formData.getAll('clientPortions[]');
+            const payes = formData.getAll('clientPaye[]');
+            const modes = formData.getAll('clientMode[]');
+
+            const commandes = [];
+            let totalPortions = 0;
+
+            for (let i = 0; i < prenoms.length; i++) {
+                if (prenoms[i] && noms[i]) {
+                    const nbPortions = parseInt(portions[i]) || 1;
+                    commandes.push({
+                        prenom: prenoms[i],
+                        nom: noms[i],
+                        portions: nbPortions,
+                        paye: payes[i],
+                        mode: modes[i]
+                    });
+                    totalPortions += nbPortions;
+                }
+            }
+
+            if (commandes.length === 0) {
+                alert('Veuillez ajouter au moins une commande.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🧀 Enregistrer mes ventes';
+                return;
+            }
+
+            const fondueData = {
+                vendeurPrenom: formData.get('vendeurPrenom'),
+                vendeurNom: formData.get('vendeurNom'),
+                vendeurClasse: formData.get('vendeurClasse'),
+                vendeurEmail: formData.get('vendeurEmail'),
+                commandes: commandes,
+                totalPortions: totalPortions,
+                totalMontant: totalPortions * 15
+            };
+
+            const result = await saveFondueRegistration(fondueData);
+
+            if (result.success) {
+                // Fill print sheet
+                document.getElementById('print-vendeur-nom').textContent = fondueData.vendeurPrenom + ' ' + fondueData.vendeurNom;
+                document.getElementById('print-vendeur-classe').textContent = fondueData.vendeurClasse;
+                
+                const tableBody = document.getElementById('print-fondue-table');
+                tableBody.innerHTML = commandes.map(c => `
+                    <tr>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">${c.prenom} ${c.nom}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${c.portions}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">CHF ${c.portions * 15}.-</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${c.paye === 'oui' ? '✓' : '✗'}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${c.mode || '-'}</td>
+                    </tr>
+                `).join('');
+                
+                document.getElementById('print-fondue-total').textContent = `${totalPortions} portions = CHF ${totalPortions * 15}.-`;
+
+                document.getElementById('fondueFormContainer').style.display = 'none';
+                document.getElementById('fondueSuccess').classList.add('show');
+                document.getElementById('fonduePrintSheet').classList.add('show');
+                document.getElementById('fonduePrintBtn').style.display = 'block';
+            } else {
+                alert('Erreur lors de l\'enregistrement. Veuillez réessayer.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🧀 Enregistrer mes ventes';
+            }
+        });
+
+        function printFondue() {
+            window.print();
+        }
+
         function formatDate(dateStr) {
             const date = new Date(dateStr);
             return date.toLocaleDateString('fr-CH', {
