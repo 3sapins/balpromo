@@ -1085,17 +1085,7 @@
                     <div class="detail-card">
                         <div class="icon">📅</div>
                         <h3>Date</h3>
-                        <p>Mercredi 24 juin 2026</p>
-                    </div>
-                    <div class="detail-card">
-                        <div class="icon">🚪</div>
-                        <h3>Entrée</h3>
-                        <p>19h30</p>
-                    </div>
-                    <div class="detail-card">
-                        <div class="icon">🌙</div>
-                        <h3>Fin du bal</h3>
-                        <p>01h00</p>
+                        <p>Mercredi 24 juin 2026<br>19h30 - 01h00</p>
                     </div>
                     <div class="detail-card">
                         <div class="icon">📍</div>
@@ -1106,11 +1096,6 @@
                         <div class="icon">🎟️</div>
                         <h3>Entrée</h3>
                         <p>CHF 10.-<br><small>(1 boisson incluse)</small></p>
-                    </div>
-                    <div class="detail-card">
-                        <div class="icon">🎧</div>
-                        <h3>Animation</h3>
-                        <p>DJ & soirée dansante</p>
                     </div>
                 </div>
 
@@ -1192,11 +1177,19 @@
                                 <option value="11VG1">11VG1</option>
                                 <option value="11VG2">11VG2</option>
                                 <option value="11VG3">11VG3</option>
+                                <option value="11VG4">11VG4</option>
+                                <option value="11VG5">11VG5</option>
+                                <option value="11VG6">11VG6</option>
+                                <option value="11VG7">11VG7</option>
+                                <option value="11VG8">11VG8</option>
                                 <option value="11VP1">11VP1</option>
                                 <option value="11VP2">11VP2</option>
                                 <option value="11VP3">11VP3</option>
-                                <option value="RAC1">RAC1</option>
-                                <option value="RAC2">RAC2</option>
+                                <option value="11VP4">11VP4</option>
+                                <option value="11VP5">11VP5</option>
+                                <option value="11VP6">11VP6</option>
+                                <option value="RAC1/1">RAC1/1</option>
+                                <option value="RAC1/2">RAC1/2</option>
                             </select>
                         </div>
                     </div>
@@ -1372,175 +1365,143 @@
 
         <!-- Vente Fondues -->
         <div id="fondue" class="page">
-            <div class="form-container" id="fondueFormContainer" style="max-width: 900px;">
+            <div class="form-container" style="max-width: 900px;">
                 <h2>🧀 Vente de Fondues</h2>
                 <p class="form-subtitle">Aide à financer le bal en vendant des fondues !</p>
 
                 <div class="info-card" style="margin-bottom: 2rem;">
                     <h3>📋 Comment ça marche ?</h3>
                     <ul>
-                        <li><strong>Prix de vente : CHF 15.- pour 400g de fondue</strong></li>
-                        <li>Note les commandes des personnes intéressées</li>
-                        <li>Encaisse le paiement (cash ou Twint au 079 744 95 39)</li>
-                        <li>Enregistre les ventes ci-dessous</li>
+                        <li><strong>400g de fondue : CHF 15.-</strong></li>
+                        <li><strong>600g de fondue : CHF 20.-</strong></li>
+                        <li>Télécharge la feuille de commande ci-dessous</li>
+                        <li>Fais signer les clients et encaisse les paiements</li>
+                        <li>Une fois tes ventes terminées, enregistre-les en ligne</li>
                     </ul>
                 </div>
 
-                <form id="fondueForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Ton prénom <span class="required">*</span></label>
-                            <input type="text" name="vendeurPrenom" required placeholder="Ton prénom">
-                        </div>
-                        <div class="form-group">
-                            <label>Ton nom <span class="required">*</span></label>
-                            <input type="text" name="vendeurNom" required placeholder="Ton nom">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Classe <span class="required">*</span></label>
-                            <select name="vendeurClasse" required>
-                                <option value="">Sélectionne ta classe</option>
-                                <option value="11VG1">11VG1</option>
-                                <option value="11VG2">11VG2</option>
-                                <option value="11VG3">11VG3</option>
-                                <option value="11VP1">11VP1</option>
-                                <option value="11VP2">11VP2</option>
-                                <option value="11VP3">11VP3</option>
-                                <option value="RAC1">RAC1</option>
-                                <option value="RAC2">RAC2</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Ton email <span class="required">*</span></label>
-                            <input type="email" name="vendeurEmail" required placeholder="ton.email@exemple.ch">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="font-size: 1.2rem; margin-bottom: 1rem;">📝 Liste des commandes</label>
-                        <table class="fondue-table" id="fondueTable">
-                            <thead>
-                                <tr>
-                                    <th>Prénom</th>
-                                    <th>Nom</th>
-                                    <th>Nb portions</th>
-                                    <th>Payé ?</th>
-                                    <th>Mode</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="fondueTableBody">
-                                <tr>
-                                    <td><input type="text" name="clientPrenom[]" placeholder="Prénom"></td>
-                                    <td><input type="text" name="clientNom[]" placeholder="Nom"></td>
-                                    <td><input type="number" name="clientPortions[]" min="1" value="1" style="width: 80px;"></td>
-                                    <td>
-                                        <select name="clientPaye[]">
-                                            <option value="non">Non</option>
-                                            <option value="oui">Oui</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select name="clientMode[]">
-                                            <option value="">-</option>
-                                            <option value="cash">Cash</option>
-                                            <option value="twint">Twint</option>
-                                        </select>
-                                    </td>
-                                    <td><button type="button" class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button type="button" class="add-row-btn" onclick="addFondueRow()">+ Ajouter une ligne</button>
-                    </div>
-
-                    <div class="form-note">
-                        <strong>💰 Paiement Twint :</strong> Les clients peuvent payer par Twint au <strong>079 744 95 39</strong>. Note bien le mode de paiement pour chaque commande.
-                    </div>
-
-                    <button type="submit" class="submit-btn" style="background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);">
-                        🧀 Enregistrer mes ventes
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn btn-fondue" onclick="generatePDF()" style="font-size: 1.2rem; padding: 1.25rem 2.5rem;">
+                        📥 Télécharger la feuille de commande
                     </button>
-                </form>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid var(--glass-border); margin: 3rem 0;">
+
+                <div id="fondueFormContainer">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; text-align: center; margin-bottom: 0.5rem; color: var(--gold);">
+                        📝 Enregistrer mes ventes
+                    </h3>
+                    <p class="form-subtitle">Une fois toutes tes fondues vendues, enregistre tes ventes ici</p>
+
+                    <form id="fondueForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ton prénom <span class="required">*</span></label>
+                                <input type="text" name="vendeurPrenom" required placeholder="Ton prénom">
+                            </div>
+                            <div class="form-group">
+                                <label>Ton nom <span class="required">*</span></label>
+                                <input type="text" name="vendeurNom" required placeholder="Ton nom">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Classe <span class="required">*</span></label>
+                                <select name="vendeurClasse" required>
+                                    <option value="">Sélectionne ta classe</option>
+                                    <option value="11VG1">11VG1</option>
+                                    <option value="11VG2">11VG2</option>
+                                    <option value="11VG3">11VG3</option>
+                                    <option value="11VG4">11VG4</option>
+                                    <option value="11VG5">11VG5</option>
+                                    <option value="11VG6">11VG6</option>
+                                    <option value="11VG7">11VG7</option>
+                                    <option value="11VG8">11VG8</option>
+                                    <option value="11VP1">11VP1</option>
+                                    <option value="11VP2">11VP2</option>
+                                    <option value="11VP3">11VP3</option>
+                                    <option value="11VP4">11VP4</option>
+                                    <option value="11VP5">11VP5</option>
+                                    <option value="11VP6">11VP6</option>
+                                    <option value="RAC1/1">RAC1/1</option>
+                                    <option value="RAC1/2">RAC1/2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Ton email <span class="required">*</span></label>
+                                <input type="email" name="vendeurEmail" required placeholder="ton.email@exemple.ch">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-size: 1.2rem; margin-bottom: 1rem;">📝 Résumé des ventes</label>
+                            <table class="fondue-table" id="fondueTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom du client</th>
+                                        <th>400g (15.-)</th>
+                                        <th>600g (20.-)</th>
+                                        <th>Mode paiement</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fondueTableBody">
+                                    <tr>
+                                        <td><input type="text" name="clientNom[]" placeholder="Nom Prénom"></td>
+                                        <td><input type="number" name="client400[]" min="0" value="0" style="width: 70px;"></td>
+                                        <td><input type="number" name="client600[]" min="0" value="0" style="width: 70px;"></td>
+                                        <td>
+                                            <select name="clientMode[]">
+                                                <option value="cash">Cash</option>
+                                                <option value="twint">Twint</option>
+                                            </select>
+                                        </td>
+                                        <td><button type="button" class="remove-row-btn" onclick="removeRow(this)">✕</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="add-row-btn" onclick="addFondueRow()">+ Ajouter une ligne</button>
+                        </div>
+
+                        <div id="fondueTotals" style="background: var(--glass); border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0;">
+                            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                                <div>
+                                    <span style="color: var(--text-muted);">Total 400g :</span>
+                                    <strong id="total400" style="color: var(--gold); margin-left: 0.5rem;">0</strong>
+                                </div>
+                                <div>
+                                    <span style="color: var(--text-muted);">Total 600g :</span>
+                                    <strong id="total600" style="color: var(--gold); margin-left: 0.5rem;">0</strong>
+                                </div>
+                                <div>
+                                    <span style="color: var(--text-muted);">Montant total :</span>
+                                    <strong id="totalMontant" style="color: var(--gold); margin-left: 0.5rem;">CHF 0.-</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-note">
+                            <strong>💰 Paiement Twint :</strong> Les clients peuvent payer par Twint au <strong>079 744 95 39</strong>
+                        </div>
+
+                        <button type="submit" class="submit-btn" style="background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);">
+                            🧀 Enregistrer mes ventes
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Success message -->
+                <div class="success-message" id="fondueSuccess">
+                    <div class="success-icon" style="background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);">🧀</div>
+                    <h3>Ventes enregistrées !</h3>
+                    <p>Merci pour ta participation à la vente de fondues !</p>
+                    <button class="btn btn-secondary" onclick="showPage('home')" style="margin-top: 1rem;">
+                        ← Retour à l'accueil
+                    </button>
+                </div>
             </div>
-
-            <!-- Success message -->
-            <div class="success-message" id="fondueSuccess">
-                <div class="success-icon" style="background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);">🧀</div>
-                <h3>Ventes enregistrées !</h3>
-                <p>Merci pour ta participation à la vente de fondues !<br>Tu peux imprimer ta feuille de suivi ci-dessous.</p>
-                <button class="btn btn-secondary" onclick="showPage('home')" style="margin-top: 1rem;">
-                    ← Retour à l'accueil
-                </button>
-            </div>
-
-            <!-- Print sheet for fondue -->
-            <div class="print-sheet" id="fonduePrintSheet">
-                <div class="print-header">
-                    <h1>🧀 Vente de Fondues - Bal de Promotions 2026</h1>
-                    <p>Collège des Trois-Sapins</p>
-                    <p><strong>Feuille de suivi des ventes</strong></p>
-                </div>
-
-                <div class="print-section">
-                    <h3>👤 Vendeur</h3>
-                    <div class="print-row">
-                        <span class="print-label">Nom :</span>
-                        <span class="print-value" id="print-vendeur-nom"></span>
-                    </div>
-                    <div class="print-row">
-                        <span class="print-label">Classe :</span>
-                        <span class="print-value" id="print-vendeur-classe"></span>
-                    </div>
-                </div>
-
-                <div class="print-section">
-                    <h3>📋 Informations vente</h3>
-                    <div class="print-row">
-                        <span class="print-label">Prix par portion :</span>
-                        <span class="print-value">CHF 15.- (400g)</span>
-                    </div>
-                    <div class="print-row">
-                        <span class="print-label">Paiement Twint :</span>
-                        <span class="print-value">079 744 95 39</span>
-                    </div>
-                </div>
-
-                <div class="print-section">
-                    <h3>📝 Commandes</h3>
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                        <thead>
-                            <tr style="background: #1a1a2e; color: white;">
-                                <th style="padding: 10px; text-align: left;">Prénom Nom</th>
-                                <th style="padding: 10px; text-align: center;">Portions</th>
-                                <th style="padding: 10px; text-align: center;">Montant</th>
-                                <th style="padding: 10px; text-align: center;">Payé</th>
-                                <th style="padding: 10px; text-align: center;">Mode</th>
-                            </tr>
-                        </thead>
-                        <tbody id="print-fondue-table">
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="print-section" style="margin-top: 20px;">
-                    <div class="print-row" style="font-weight: bold; font-size: 1.1rem;">
-                        <span class="print-label">TOTAL :</span>
-                        <span class="print-value" id="print-fondue-total"></span>
-                    </div>
-                </div>
-
-                <div class="print-footer">
-                    <p>Bal de Promotions 2026 | Collège des Trois-Sapins</p>
-                </div>
-            </div>
-
-            <button class="print-btn" id="fonduePrintBtn" style="display: none; background: linear-gradient(135deg, #ff9800 0%, var(--gold) 100%);" onclick="printFondue()">
-                🖨️ Imprimer la feuille de suivi
-            </button>
         </div>
 
         <!-- Inscription Bénévole -->
@@ -1869,18 +1830,11 @@
             const tbody = document.getElementById('fondueTableBody');
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td><input type="text" name="clientPrenom[]" placeholder="Prénom"></td>
-                <td><input type="text" name="clientNom[]" placeholder="Nom"></td>
-                <td><input type="number" name="clientPortions[]" min="1" value="1" style="width: 80px;"></td>
-                <td>
-                    <select name="clientPaye[]">
-                        <option value="non">Non</option>
-                        <option value="oui">Oui</option>
-                    </select>
-                </td>
+                <td><input type="text" name="clientNom[]" placeholder="Nom Prénom" oninput="updateTotals()"></td>
+                <td><input type="number" name="client400[]" min="0" value="0" style="width: 70px;" oninput="updateTotals()"></td>
+                <td><input type="number" name="client600[]" min="0" value="0" style="width: 70px;" oninput="updateTotals()"></td>
                 <td>
                     <select name="clientMode[]">
-                        <option value="">-</option>
                         <option value="cash">Cash</option>
                         <option value="twint">Twint</option>
                     </select>
@@ -1894,7 +1848,126 @@
             const tbody = document.getElementById('fondueTableBody');
             if (tbody.children.length > 1) {
                 btn.closest('tr').remove();
+                updateTotals();
             }
+        }
+
+        function updateTotals() {
+            const q400 = document.querySelectorAll('input[name="client400[]"]');
+            const q600 = document.querySelectorAll('input[name="client600[]"]');
+            
+            let total400 = 0;
+            let total600 = 0;
+            
+            q400.forEach(input => total400 += parseInt(input.value) || 0);
+            q600.forEach(input => total600 += parseInt(input.value) || 0);
+            
+            const montant = (total400 * 15) + (total600 * 20);
+            
+            document.getElementById('total400').textContent = total400;
+            document.getElementById('total600').textContent = total600;
+            document.getElementById('totalMontant').textContent = 'CHF ' + montant + '.-';
+        }
+
+        // Add oninput to initial row
+        document.querySelectorAll('#fondueTableBody input').forEach(input => {
+            input.addEventListener('input', updateTotals);
+        });
+
+        // Generate PDF for fondue order sheet
+        function generatePDF() {
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Feuille de commande - Vente de Fondues</title>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+                        body { font-family: 'Outfit', Arial, sans-serif; padding: 20px; color: #333; }
+                        .header { text-align: center; border-bottom: 3px solid #1a1a2e; padding-bottom: 15px; margin-bottom: 20px; }
+                        .header h1 { color: #1a1a2e; font-size: 1.8rem; margin-bottom: 5px; }
+                        .header p { color: #666; }
+                        .info-box { background: #f5f5f5; border-radius: 10px; padding: 15px; margin-bottom: 20px; }
+                        .info-box h3 { color: #e94560; margin-bottom: 10px; }
+                        .vendeur-info { display: flex; gap: 20px; margin-bottom: 20px; }
+                        .vendeur-field { flex: 1; }
+                        .vendeur-field label { display: block; font-weight: 600; margin-bottom: 5px; color: #555; }
+                        .vendeur-field .line { border-bottom: 1px solid #333; height: 25px; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                        th { background: #1a1a2e; color: white; padding: 10px; text-align: left; font-size: 0.9rem; }
+                        td { border: 1px solid #ddd; padding: 12px 8px; height: 35px; }
+                        .footer { margin-top: 30px; text-align: center; color: #888; font-size: 0.85rem; border-top: 1px solid #ddd; padding-top: 15px; }
+                        .twint-info { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 10px; margin-top: 15px; text-align: center; }
+                        @media print { body { padding: 10px; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>🧀 Vente de Fondues - Bal de Promotions 2026</h1>
+                        <p>Collège des Trois-Sapins | Échallens</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>💰 Prix</h3>
+                        <p><strong>400g de fondue : CHF 15.-</strong></p>
+                        <p><strong>600g de fondue : CHF 20.-</strong></p>
+                        <div class="twint-info">
+                            <strong>Paiement Twint possible :</strong> 079 744 95 39
+                        </div>
+                    </div>
+
+                    <div class="vendeur-info">
+                        <div class="vendeur-field">
+                            <label>Nom de l'élève vendeur :</label>
+                            <div class="line"></div>
+                        </div>
+                        <div class="vendeur-field">
+                            <label>Prénom :</label>
+                            <div class="line"></div>
+                        </div>
+                        <div class="vendeur-field" style="flex: 0.5;">
+                            <label>Classe :</label>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Nom du client</th>
+                                <th style="width: 15%;">400g (15.-)</th>
+                                <th style="width: 15%;">600g (20.-)</th>
+                                <th style="width: 15%;">Total CHF</th>
+                                <th style="width: 15%;">Payé (Cash/Twint)</th>
+                                <th style="width: 10%;">Signature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${Array(15).fill('<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>').join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr style="background: #f0f0f0; font-weight: bold;">
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="footer">
+                        <p>📌 Une fois toutes tes ventes terminées, enregistre-les sur le site du bal !</p>
+                        <p>Bal de Promotions 2026 | Collège des Trois-Sapins</p>
+                    </div>
+
+                    <script>window.onload = function() { window.print(); }<\/script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
         }
 
         // Student form submission
@@ -2001,31 +2074,32 @@
             submitBtn.textContent = '⏳ Enregistrement...';
 
             // Collect all client rows
-            const prenoms = formData.getAll('clientPrenom[]');
             const noms = formData.getAll('clientNom[]');
-            const portions = formData.getAll('clientPortions[]');
-            const payes = formData.getAll('clientPaye[]');
+            const q400 = formData.getAll('client400[]');
+            const q600 = formData.getAll('client600[]');
             const modes = formData.getAll('clientMode[]');
 
             const commandes = [];
-            let totalPortions = 0;
+            let total400 = 0;
+            let total600 = 0;
 
-            for (let i = 0; i < prenoms.length; i++) {
-                if (prenoms[i] && noms[i]) {
-                    const nbPortions = parseInt(portions[i]) || 1;
+            for (let i = 0; i < noms.length; i++) {
+                const nb400 = parseInt(q400[i]) || 0;
+                const nb600 = parseInt(q600[i]) || 0;
+                if (noms[i] && (nb400 > 0 || nb600 > 0)) {
                     commandes.push({
-                        prenom: prenoms[i],
                         nom: noms[i],
-                        portions: nbPortions,
-                        paye: payes[i],
+                        nb400: nb400,
+                        nb600: nb600,
                         mode: modes[i]
                     });
-                    totalPortions += nbPortions;
+                    total400 += nb400;
+                    total600 += nb600;
                 }
             }
 
             if (commandes.length === 0) {
-                alert('Veuillez ajouter au moins une commande.');
+                alert('Veuillez ajouter au moins une vente.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = '🧀 Enregistrer mes ventes';
                 return;
@@ -2037,44 +2111,22 @@
                 vendeurClasse: formData.get('vendeurClasse'),
                 vendeurEmail: formData.get('vendeurEmail'),
                 commandes: commandes,
-                totalPortions: totalPortions,
-                totalMontant: totalPortions * 15
+                total400: total400,
+                total600: total600,
+                totalMontant: (total400 * 15) + (total600 * 20)
             };
 
             const result = await saveFondueRegistration(fondueData);
 
             if (result.success) {
-                // Fill print sheet
-                document.getElementById('print-vendeur-nom').textContent = fondueData.vendeurPrenom + ' ' + fondueData.vendeurNom;
-                document.getElementById('print-vendeur-classe').textContent = fondueData.vendeurClasse;
-                
-                const tableBody = document.getElementById('print-fondue-table');
-                tableBody.innerHTML = commandes.map(c => `
-                    <tr>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;">${c.prenom} ${c.nom}</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${c.portions}</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">CHF ${c.portions * 15}.-</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${c.paye === 'oui' ? '✓' : '✗'}</td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${c.mode || '-'}</td>
-                    </tr>
-                `).join('');
-                
-                document.getElementById('print-fondue-total').textContent = `${totalPortions} portions = CHF ${totalPortions * 15}.-`;
-
                 document.getElementById('fondueFormContainer').style.display = 'none';
                 document.getElementById('fondueSuccess').classList.add('show');
-                document.getElementById('fonduePrintSheet').classList.add('show');
-                document.getElementById('fonduePrintBtn').style.display = 'block';
             } else {
                 alert('Erreur lors de l\'enregistrement. Veuillez réessayer.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = '🧀 Enregistrer mes ventes';
             }
         });
-
-        function printFondue() {
-            window.print();
-        }
 
         function formatDate(dateStr) {
             const date = new Date(dateStr);
